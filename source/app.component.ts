@@ -6,6 +6,12 @@ import {Speaker} from './services/speaker';
 @Component({
 	selector: 'event-app',
 	template: `
+		<nav>
+			<a >Agenda</a>
+			<a >Lectures</a>
+			<a >Speakers</a>
+		</nav>
+
 		<ul>
 			<li *ngFor="#speaker of speakers">
 				{{speaker.name}}

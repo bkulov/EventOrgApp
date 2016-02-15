@@ -31,7 +31,7 @@ System.register(['angular2/core', './services/speakers.service'], function(expor
                 EventApp = __decorate([
                     core_1.Component({
                         selector: 'event-app',
-                        template: "\n\t\t<ul>\n\t\t\t<li *ngFor=\"#speaker of speakers\">\n\t\t\t\t{{speaker.name}}\n\t\t\t</li>\n\t\t</ul>\n\t",
+                        template: "\n\t\t<nav>\n\t\t\t<a >Agenda</a>\n\t\t\t<a >Lectures</a>\n\t\t\t<a >Speakers</a>\n\t\t</nav>\n\n\t\t<ul>\n\t\t\t<li *ngFor=\"#speaker of speakers\">\n\t\t\t\t{{speaker.name}}\n\t\t\t</li>\n\t\t</ul>\n\t",
                         providers: [speakers_service_1.SpeakersService]
                     }), 
                     __metadata('design:paramtypes', [speakers_service_1.SpeakersService])
