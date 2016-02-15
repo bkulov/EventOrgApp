@@ -1,0 +1,1 @@
+{"version":3,"file":"speakers.service.js","sourceRoot":"","sources":["speakers.service.ts"],"names":["SpeakersService","SpeakersService.constructor","SpeakersService.getSpeakers"],"mappings":";;;;;;;;;YAGA;gBAAAA;gBAIAC,CAACA;gBAHAD,qCAAWA,GAAXA;oBACCE,MAAMA,CAACA,OAAOA,CAACA,OAAOA,CAACA,4BAAYA,CAACA,CAACA;gBACtCA,CAACA;gBACFF,sBAACA;YAADA,CAACA,AAJD,IAIC;YAJD,6CAIC,CAAA"}
