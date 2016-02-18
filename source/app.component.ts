@@ -1,10 +1,11 @@
-import {Component, OnInit} from 'angular2/core';
+import {Component} from 'angular2/core';
 import {RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS} from 'angular2/router';
 
 import {SpeakersService} from './services/speakers.service';
 import {Speaker} from './services/speaker';
 import {AgendaComponent} from './agenda.component';
 import {LecturesService} from './services/lectures.service';
+import {LecturesComponent} from './lectures.component';
 
 @RouteConfig([
     {
@@ -15,7 +16,7 @@ import {LecturesService} from './services/lectures.service';
     }, {
         path: '/lectures',
         name: 'Lectures',
-        component: AgendaComponent
+        component: LecturesComponent
     }, {
         path: '/lecture/:id',
         name: 'LectureDetail',
@@ -34,7 +35,7 @@ import {LecturesService} from './services/lectures.service';
 @Component({
 	selector: 'event-app',
 	template: `
-		<button>back</button><h2>Selected tab</h2>
+		<button (click)="goBack()">back</button><h2>Selected tab</h2>
 		<nav>
 			<a [routerLink]="['Agenda']">Agenda</a>
 			<a [routerLink]="['Lectures']">Lectures</a>
@@ -46,12 +47,8 @@ import {LecturesService} from './services/lectures.service';
 	directives: [ROUTER_DIRECTIVES, AgendaComponent]
 
 })
-export class EventApp implements OnInit {
-	public speakers: Speaker[];
-
-	constructor(private _speakersService: SpeakersService) { };
-
-	ngOnInit() {
-		this._speakersService.getSpeakers().then(speakers => this.speakers = speakers);
+export class EventApp{
+	goBack() {
+		window.history.back();
 	}
 }

@@ -1,28 +1,23 @@
-<ion-view title="Lectures">
-  <ion-content class="padding">
-    <ion-list>
-
-      <ion-item class="item-borderless" ng-repeat="date in dates">
+<div class="panning">
+    <ul>
+      <li class="item-borderless" *ngFor="#date of dates">
         <h4 align="center">{{toLocaleDateString(date)}}</h4>
 
-        <ion-list>
-          <ion-item class="item-remove-animate item-icon-left" ng-repeat="lecture in getLecturesByDate(date)" type="item-text-wrap"
-                    ui-sref="tab.lecture-detail({lectureId: lecture.id})">
-            <ion-button class="icon {{lecture.scheduled ? 'ion-minus-circled' : 'ion-plus-circled'}}" style="color:red"
+        <ul>
+          <li *ngFor="#lecture of getLecturesByDate(date)">
+            <!--<button class="icon {{lecture.scheduled ? 'ion-minus-circled' : 'ion-plus-circled'}}" style="color:red"
                         ng-click="setLectureSchedule(lecture, !lecture.scheduled); $event.stopPropagation();">
-            </ion-button>
+            </button>-->
 
             <p>{{lecture.startTime.toLocaleTimeString()}}</p>
 
             <h2>{{lecture.title}}</h2>
             <p>{{getLectorName(lecture.lectorId)}}</p>
 
-            <p style="color:bisque;float:right">{{lecture.difficulty}}</p>
-          </ion-item>
-        </ion-list>
+            <p align="right" style="color:bisque">{{getDifficulty(lecture.difficulty)}}</p>
+          </li>
+        </ul>
 
-      </ion-item>
-
-    </ion-list>
-  </ion-content>
-</ion-view>
+      </li>
+    </ul>
+</div>

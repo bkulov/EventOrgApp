@@ -1,4 +1,4 @@
-System.register(['angular2/core', './services/lectures.service'], function(exports_1) {
+System.register(['angular2/core', './services/lectures.service', './lectures-list.component'], function(exports_1) {
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -8,7 +8,7 @@ System.register(['angular2/core', './services/lectures.service'], function(expor
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, lectures_service_1;
+    var core_1, lectures_service_1, lectures_list_component_1;
     var AgendaComponent;
     return {
         setters:[
@@ -17,6 +17,9 @@ System.register(['angular2/core', './services/lectures.service'], function(expor
             },
             function (lectures_service_1_1) {
                 lectures_service_1 = lectures_service_1_1;
+            },
+            function (lectures_list_component_1_1) {
+                lectures_list_component_1 = lectures_list_component_1_1;
             }],
         execute: function() {
             AgendaComponent = (function () {
@@ -29,23 +32,12 @@ System.register(['angular2/core', './services/lectures.service'], function(expor
                     this.dates = this._lecturesService.getDates();
                     this._lectures = this._lecturesService.getAllByDate(this.dates[0]);
                 };
-                AgendaComponent.prototype.toLocaleDateString = function (date) {
-                    return this._lecturesService.toLocaleDateString(date);
-                };
-                AgendaComponent.prototype.getScheduledLecturesByDate = function (date) {
-                    return this._lecturesService.getScheduledByDate(date);
-                };
-                AgendaComponent.prototype.getLectorName = function (lectorId) {
-                    return this._lecturesService.getLectorName(lectorId);
-                };
-                AgendaComponent.prototype.getDifficulty = function (difficulty) {
-                    return this._lecturesService.getLectureDifficultyAsText(difficulty);
-                };
                 AgendaComponent = __decorate([
                     core_1.Component({
                         selector: 'agenda',
                         templateUrl: './source/templates/agenda.html',
-                        styleUrls: ['source/css/agenda.component.css']
+                        styleUrls: ['source/css/agenda.component.css'],
+                        directives: [lectures_list_component_1.LecturesListComponent]
                     }), 
                     __metadata('design:paramtypes', [lectures_service_1.LecturesService])
                 ], AgendaComponent);

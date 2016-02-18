@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/router', './services/speakers.service', './agenda.component', './services/lectures.service'], function(exports_1) {
+System.register(['angular2/core', 'angular2/router', './services/speakers.service', './agenda.component', './services/lectures.service', './lectures.component'], function(exports_1) {
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -8,7 +8,7 @@ System.register(['angular2/core', 'angular2/router', './services/speakers.servic
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, router_1, speakers_service_1, agenda_component_1, lectures_service_1;
+    var core_1, router_1, speakers_service_1, agenda_component_1, lectures_service_1, lectures_component_1;
     var EventApp;
     return {
         setters:[
@@ -26,16 +26,16 @@ System.register(['angular2/core', 'angular2/router', './services/speakers.servic
             },
             function (lectures_service_1_1) {
                 lectures_service_1 = lectures_service_1_1;
+            },
+            function (lectures_component_1_1) {
+                lectures_component_1 = lectures_component_1_1;
             }],
         execute: function() {
             EventApp = (function () {
-                function EventApp(_speakersService) {
-                    this._speakersService = _speakersService;
+                function EventApp() {
                 }
-                ;
-                EventApp.prototype.ngOnInit = function () {
-                    var _this = this;
-                    this._speakersService.getSpeakers().then(function (speakers) { return _this.speakers = speakers; });
+                EventApp.prototype.goBack = function () {
+                    window.history.back();
                 };
                 EventApp = __decorate([
                     router_1.RouteConfig([
@@ -47,7 +47,7 @@ System.register(['angular2/core', 'angular2/router', './services/speakers.servic
                         }, {
                             path: '/lectures',
                             name: 'Lectures',
-                            component: agenda_component_1.AgendaComponent
+                            component: lectures_component_1.LecturesComponent
                         }, {
                             path: '/lecture/:id',
                             name: 'LectureDetail',
@@ -64,11 +64,11 @@ System.register(['angular2/core', 'angular2/router', './services/speakers.servic
                     ]),
                     core_1.Component({
                         selector: 'event-app',
-                        template: "\n\t\t<button>back</button><h2>Selected tab</h2>\n\t\t<nav>\n\t\t\t<a [routerLink]=\"['Agenda']\">Agenda</a>\n\t\t\t<a [routerLink]=\"['Lectures']\">Lectures</a>\n\t\t\t<a [routerLink]=\"['Speakers']\">Speakers</a>\n\t\t</nav>\n\t\t<router-outlet></router-outlet>\n\t",
+                        template: "\n\t\t<button (click)=\"goBack()\">back</button><h2>Selected tab</h2>\n\t\t<nav>\n\t\t\t<a [routerLink]=\"['Agenda']\">Agenda</a>\n\t\t\t<a [routerLink]=\"['Lectures']\">Lectures</a>\n\t\t\t<a [routerLink]=\"['Speakers']\">Speakers</a>\n\t\t</nav>\n\t\t<router-outlet></router-outlet>\n\t",
                         providers: [speakers_service_1.SpeakersService, lectures_service_1.LecturesService, router_1.ROUTER_PROVIDERS],
                         directives: [router_1.ROUTER_DIRECTIVES, agenda_component_1.AgendaComponent]
                     }), 
-                    __metadata('design:paramtypes', [speakers_service_1.SpeakersService])
+                    __metadata('design:paramtypes', [])
                 ], EventApp);
                 return EventApp;
             })();
