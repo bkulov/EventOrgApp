@@ -7,8 +7,14 @@ import {Difficulty} from './difficulty';
 
 @Injectable()
 export class LecturesService {
+
+	// cache
 	_lectures: Lecture[] = [];
 	_dates: Date[];
+	_lecturesByDate: Map<string, Lecture[]> = new Map<string, Lecture[]>();
+	_scheduledLecturesByDate: Map<string, Lecture[]> = new Map<string, Lecture[]>();
+	_lecturesBySpeaker: Map<number, Lecture[]> = new Map<number, Lecture[]>();
+
 
 	constructor(private _speakersService: SpeakersService) {
 		this._getLectures().then(lectures => this._lectures = lectures);
@@ -21,12 +27,11 @@ export class LecturesService {
 	_isDatePresentInArray(date: Date): boolean {
 		let _self = this;
 		return this._dates.filter(function (d) {
-			return _self.dateEquals(d, date);
+			return _self._dateEquals(d, date);
 		}).length > 0;
 	}
 
-
-	dateEquals(date1: Date, date2: Date): boolean {
+	_dateEquals(date1: Date, date2: Date): boolean {
 		return date1.getDate() === date2.getDate() &&
 			date1.getMonth() === date2.getMonth() &&
 			date1.getFullYear() === date2.getFullYear();
@@ -53,23 +58,35 @@ export class LecturesService {
 	}
 
 	getAllByDate(date: Date): Lecture[] {
-		var lecturesForDay: Lecture[] = [];
+		var dateAsString = date.toLocaleDateString();
+		var lecturesForDate = this._lecturesByDate.get(dateAsString);
 
-		for (var i = 0; i < this._lectures.length; i++) {
-			if (this.dateEquals(this._lectures[i].startTime, date)) {
-				lecturesForDay.push(this._lectures[i]);
+		if (lecturesForDate === undefined) {
+			lecturesForDate = [];
+
+			for (var i = 0; i < this._lectures.length; i++) {
+				if (this._dateEquals(this._lectures[i].startTime, date)) {
+					lecturesForDate.push(this._lectures[i]);
+				}
 			}
+
+			this._lecturesByDate.set(dateAsString, lecturesForDate);
 		}
 
-		return lecturesForDay;
+		return lecturesForDate;
 	}
 
 	getScheduledByDate(date: Date): Lecture[] {
-		var aa = this.getAllByDate(date);
-		var bb = aa.filter(function (l) { return l.scheduled; });
+		var dateAsString = date.toLocaleDateString();
+		var lecturesForDate = this._lecturesByDate.get(dateAsString);
 
-		return bb;
-		//return this.getAllByDate(date).filter(function (l) { return l.scheduled; });
+		if (lecturesForDate === undefined) {
+			lecturesForDate = this.getAllByDate(date).filter(function (l) { return l.scheduled; });
+
+			this._lecturesByDate.set(dateAsString, lecturesForDate);
+		}
+
+		return lecturesForDate;
 	}
 
 	get(lectureId: number): Lecture {
@@ -83,12 +100,17 @@ export class LecturesService {
 	}
 
 	allBySpeaker(speakerId: number): Lecture[] {
-		var lecturesBySpeaker: Lecture[] = [];
+		var lecturesBySpeaker = this._lecturesBySpeaker.get(speakerId);
+		if (lecturesBySpeaker === undefined) {
+			lecturesBySpeaker = [];
 
-		for (var i = 0; i < this._lectures.length; i++) {
-			if (this._lectures[i].lectorId === speakerId) {
-				lecturesBySpeaker.push(this._lectures[i]);
+			for (var i = 0; i < this._lectures.length; i++) {
+				if (this._lectures[i].lectorId === speakerId) {
+					lecturesBySpeaker.push(this._lectures[i]);
+				}
 			}
+
+			this._lecturesBySpeaker.set(speakerId, lecturesBySpeaker);
 		}
 
 		return lecturesBySpeaker;

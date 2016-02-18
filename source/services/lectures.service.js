@@ -29,7 +29,11 @@ System.register(['angular2/core', './lectures-mock', './speakers.service', './di
                 function LecturesService(_speakersService) {
                     var _this = this;
                     this._speakersService = _speakersService;
+                    // cache
                     this._lectures = [];
+                    this._lecturesByDate = new Map();
+                    this._scheduledLecturesByDate = new Map();
+                    this._lecturesBySpeaker = new Map();
                     this._getLectures().then(function (lectures) { return _this._lectures = lectures; });
                 }
                 LecturesService.prototype._getLectures = function () {
@@ -38,10 +42,10 @@ System.register(['angular2/core', './lectures-mock', './speakers.service', './di
                 LecturesService.prototype._isDatePresentInArray = function (date) {
                     var _self = this;
                     return this._dates.filter(function (d) {
-                        return _self.dateEquals(d, date);
+                        return _self._dateEquals(d, date);
                     }).length > 0;
                 };
-                LecturesService.prototype.dateEquals = function (date1, date2) {
+                LecturesService.prototype._dateEquals = function (date1, date2) {
                     return date1.getDate() === date2.getDate() &&
                         date1.getMonth() === date2.getMonth() &&
                         date1.getFullYear() === date2.getFullYear();
@@ -63,19 +67,27 @@ System.register(['angular2/core', './lectures-mock', './speakers.service', './di
                     return this._dates;
                 };
                 LecturesService.prototype.getAllByDate = function (date) {
-                    var lecturesForDay = [];
-                    for (var i = 0; i < this._lectures.length; i++) {
-                        if (this.dateEquals(this._lectures[i].startTime, date)) {
-                            lecturesForDay.push(this._lectures[i]);
+                    var dateAsString = date.toLocaleDateString();
+                    var lecturesForDate = this._lecturesByDate.get(dateAsString);
+                    if (lecturesForDate === undefined) {
+                        lecturesForDate = [];
+                        for (var i = 0; i < this._lectures.length; i++) {
+                            if (this._dateEquals(this._lectures[i].startTime, date)) {
+                                lecturesForDate.push(this._lectures[i]);
+                            }
                         }
+                        this._lecturesByDate.set(dateAsString, lecturesForDate);
                     }
-                    return lecturesForDay;
+                    return lecturesForDate;
                 };
                 LecturesService.prototype.getScheduledByDate = function (date) {
-                    var aa = this.getAllByDate(date);
-                    var bb = aa.filter(function (l) { return l.scheduled; });
-                    return bb;
-                    //return this.getAllByDate(date).filter(function (l) { return l.scheduled; });
+                    var dateAsString = date.toLocaleDateString();
+                    var lecturesForDate = this._lecturesByDate.get(dateAsString);
+                    if (lecturesForDate === undefined) {
+                        lecturesForDate = this.getAllByDate(date).filter(function (l) { return l.scheduled; });
+                        this._lecturesByDate.set(dateAsString, lecturesForDate);
+                    }
+                    return lecturesForDate;
                 };
                 LecturesService.prototype.get = function (lectureId) {
                     for (var i = 0; i < this._lectures.length; i++) {
@@ -86,11 +98,15 @@ System.register(['angular2/core', './lectures-mock', './speakers.service', './di
                     return null;
                 };
                 LecturesService.prototype.allBySpeaker = function (speakerId) {
-                    var lecturesBySpeaker = [];
-                    for (var i = 0; i < this._lectures.length; i++) {
-                        if (this._lectures[i].lectorId === speakerId) {
-                            lecturesBySpeaker.push(this._lectures[i]);
+                    var lecturesBySpeaker = this._lecturesBySpeaker.get(speakerId);
+                    if (lecturesBySpeaker === undefined) {
+                        lecturesBySpeaker = [];
+                        for (var i = 0; i < this._lectures.length; i++) {
+                            if (this._lectures[i].lectorId === speakerId) {
+                                lecturesBySpeaker.push(this._lectures[i]);
+                            }
                         }
+                        this._lecturesBySpeaker.set(speakerId, lecturesBySpeaker);
                     }
                     return lecturesBySpeaker;
                 };

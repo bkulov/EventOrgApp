@@ -1,8 +1,6 @@
-import {Component, OnInit} from 'angular2/core';
+import {Component} from 'angular2/core';
+import {Router} from 'angular2/router';
 
-import {Lecture} from './services/lecture';
-import {LecturesService} from './services/lectures.service';
-import {Difficulty} from './services/difficulty';
 import {LecturesListComponent} from './lectures-list.component';
 
 @Component({
@@ -11,32 +9,10 @@ import {LecturesListComponent} from './lectures-list.component';
 	styleUrls: ['source/css/agenda.component.css'],
 	directives: [LecturesListComponent]
 })
-export class AgendaComponent implements OnInit {
-	public title: string = 'Agenda';
-	public dates: Date[] = [];
+export class AgendaComponent {
+	constructor(private _router: Router) { }
 
-	_lectures: Lecture[];
-
-	constructor(private _lecturesService: LecturesService) { }
-
-	ngOnInit() {
-		this.dates = this._lecturesService.getDates();
-		this._lectures = this._lecturesService.getAllByDate(this.dates[0]);
+	onAddLectures() {
+        this._router.navigate(['Lectures']);
 	}
-
-	//toLocaleDateString(date: Date): string {
-	//	return this._lecturesService.toLocaleDateString(date);
-	//}
-
-	//getScheduledLecturesByDate(date: Date): Lecture[] {
-	//	return this._lecturesService.getScheduledByDate(date);
-	//}
-
-	//getLectorName(lectorId: number): string {
-	//	return this._lecturesService.getLectorName(lectorId);
-	//}
-
-	//getDifficulty(difficulty: Difficulty): string {
-	//	return this._lecturesService.getLectureDifficultyAsText(difficulty);
-	//}
 }

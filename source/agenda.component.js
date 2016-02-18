@@ -1,4 +1,4 @@
-System.register(['angular2/core', './services/lectures.service', './lectures-list.component'], function(exports_1) {
+System.register(['angular2/core', 'angular2/router', './lectures-list.component'], function(exports_1) {
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -8,29 +8,26 @@ System.register(['angular2/core', './services/lectures.service', './lectures-lis
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, lectures_service_1, lectures_list_component_1;
+    var core_1, router_1, lectures_list_component_1;
     var AgendaComponent;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
             },
-            function (lectures_service_1_1) {
-                lectures_service_1 = lectures_service_1_1;
+            function (router_1_1) {
+                router_1 = router_1_1;
             },
             function (lectures_list_component_1_1) {
                 lectures_list_component_1 = lectures_list_component_1_1;
             }],
         execute: function() {
             AgendaComponent = (function () {
-                function AgendaComponent(_lecturesService) {
-                    this._lecturesService = _lecturesService;
-                    this.title = 'Agenda';
-                    this.dates = [];
+                function AgendaComponent(_router) {
+                    this._router = _router;
                 }
-                AgendaComponent.prototype.ngOnInit = function () {
-                    this.dates = this._lecturesService.getDates();
-                    this._lectures = this._lecturesService.getAllByDate(this.dates[0]);
+                AgendaComponent.prototype.onAddLectures = function () {
+                    this._router.navigate(['Lectures']);
                 };
                 AgendaComponent = __decorate([
                     core_1.Component({
@@ -39,7 +36,7 @@ System.register(['angular2/core', './services/lectures.service', './lectures-lis
                         styleUrls: ['source/css/agenda.component.css'],
                         directives: [lectures_list_component_1.LecturesListComponent]
                     }), 
-                    __metadata('design:paramtypes', [lectures_service_1.LecturesService])
+                    __metadata('design:paramtypes', [router_1.Router])
                 ], AgendaComponent);
                 return AgendaComponent;
             })();
