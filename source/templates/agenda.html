@@ -1,0 +1,29 @@
+<div class="padding">
+
+<ul>
+    <li class="item-borderless" *ngFor="#date of dates">
+        <h4 align="center">{{toLocaleDateString(date)}}</h4>
+
+        <ul>
+            <li *ngFor="#lecture of getScheduledLecturesByDate(date)">
+                <div>
+                <p>{{lecture.startTime.toLocaleTimeString()}}</p>
+
+                <h2>{{lecture.title}}</h2>
+                <p>{{getLectorName(lecture.lectorId)}}</p>
+
+                <p align="right" style="color:bisque">{{getDifficulty(lecture.difficulty)}}</p>
+                </div>
+            </li>
+        </ul>
+
+    </li>
+</ul>
+
+<div class="padding" align="center">
+    <button class="button icon-left button-clear ion-plus" style="color: lightgreen" href="tab.lectures">
+    Add lectures
+    </button>
+</div>
+
+</div>

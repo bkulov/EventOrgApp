@@ -1,0 +1,19 @@
+<ion-view title="Speakers">
+  <ion-content class="padding">
+
+    <ion-list>
+
+      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="speaker in speakers" type="item-text-wrap"
+                ui-sref="tab.speaker-detail({speakerId: speaker.id})">
+
+        <img ng-src="{{speaker.photo}}">
+        <h2>{{speaker.name}}</h2>
+        <p>{{speaker.jobTitle}} at {{speaker.company}}</p>
+        <i class="icon ion-chevron-right icon-accessory"></i>
+
+      </ion-item>
+
+    </ion-list>
+
+  </ion-content>
+</ion-view>

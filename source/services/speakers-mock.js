@@ -1,9 +1,9 @@
 System.register([], function(exports_1) {
-    var SpeakersMock;
+    var SPEAKERSMOCK;
     return {
         setters:[],
         execute: function() {
-            exports_1("SpeakersMock", SpeakersMock = [{
+            exports_1("SPEAKERSMOCK", SPEAKERSMOCK = [{
                     id: 0,
                     name: 'Gerrard Buttler',
                     photo: 'img/gerrard.jpg',

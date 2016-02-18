@@ -1,0 +1,35 @@
+﻿<ion-view view-title="Speakers">
+  <ion-content class="padding">
+
+    <div class="item-image">
+      <img ng-src="{{speaker.photo}}">
+    </div>
+
+    <div class="padding">
+      <h2 align="center">{{speaker.name}}</h2>
+      <p align="center">{{speaker.jobTitle}} at {{speaker.company}}</p>
+    </div>
+
+    <div class="padding" align="center">
+      <ion-button class="button icon ion-social-facebook-outline"></ion-button>
+      <ion-button class="button icon ion-social-tumblr-outline"></ion-button>
+      <ion-button class="button icon ion-social-googleplus-outline"></ion-button>
+    </div>
+
+    <div class="padding">
+      <center class="padding">Lectures</center>
+      <ion-list>
+        <ion-item class="item-remove-animate item-borderless" ng-repeat="lecture in lectures" type="item-text-wrap">
+          <p>{{lecture.startTime.toLocaleDateString()}} {{lecture.startTime.toLocaleTimeString()}}</p>
+          <a ui-sref="tab.lecture-detail({lectureId: lecture.id})">{{lecture.title}}</a>
+        </ion-item>
+      </ion-list>
+    </div>
+
+    <div class="padding">
+      <p align="justify">
+        {{speaker.bio}}
+      </p>
+    </div>
+</ion-content>
+</ion-view>

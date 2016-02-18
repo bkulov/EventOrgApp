@@ -1,6 +1,6 @@
 import {Speaker} from './speaker';
 
-export var SpeakersMock: Speaker[] = [{
+export var SPEAKERSMOCK: Speaker[] = [{
 	id: 0,
 	name: 'Gerrard Buttler',
 	photo: 'img/gerrard.jpg',

@@ -1,16 +1,32 @@
-import {OnInit} from 'angular2/core';
+import {Injectable} from 'angular2/core';
 
 import {Lecture} from './lecture';
-import {LecturesMock} from './lectures-mock';
+import {LECTURESMOCK} from './lectures-mock';
+import {SpeakersService} from './speakers.service';
+import {Difficulty} from './difficulty';
 
-export class LecturesService implements OnInit {
-	_lectures: Lecture[];
+@Injectable()
+export class LecturesService {
+	_lectures: Lecture[] = [];
+	_dates: Date[];
 
-	ngOnInit() {
-		this._lectures = LecturesMock;
+	constructor(private _speakersService: SpeakersService) {
+		this._getLectures().then(lectures => this._lectures = lectures);
 	}
 
-	_dateEquals(date1: Date, date2: Date): boolean {
+	_getLectures(): Promise<Lecture[]> {
+		return Promise.resolve(LECTURESMOCK);
+	}
+
+	_isDatePresentInArray(date: Date): boolean {
+		let _self = this;
+		return this._dates.filter(function (d) {
+			return _self.dateEquals(d, date);
+		}).length > 0;
+	}
+
+
+	dateEquals(date1: Date, date2: Date): boolean {
 		return date1.getDate() === date2.getDate() &&
 			date1.getMonth() === date2.getMonth() &&
 			date1.getFullYear() === date2.getFullYear();
@@ -23,31 +39,37 @@ export class LecturesService implements OnInit {
 	}
 
 	getDates(): Date[] {
-		var dates: Date[] = [];
+		if (this._dates === undefined) {
+			this._dates = [];
 
-		var isDatePresentInArray = function (date) {
-			return dates.filter(function (d) { return this._dateEquals(d, date); }).length > 0;
-		}
-
-		for (var lecture of this._lectures) {
-			if (!isDatePresentInArray(lecture.startTime)) {
-				dates.push(lecture.startTime);
+			for (let lecture of this._lectures) {
+				if (!this._isDatePresentInArray(lecture.startTime)) {
+					this._dates.push(lecture.startTime);
+				}
 			}
 		}
 
-		return dates;
+		return this._dates;
 	}
 
 	getAllByDate(date: Date): Lecture[] {
 		var lecturesForDay: Lecture[] = [];
 
 		for (var i = 0; i < this._lectures.length; i++) {
-			if (this._dateEquals(this._lectures[i].startTime, date)) {
+			if (this.dateEquals(this._lectures[i].startTime, date)) {
 				lecturesForDay.push(this._lectures[i]);
 			}
 		}
 
 		return lecturesForDay;
+	}
+
+	getScheduledByDate(date: Date): Lecture[] {
+		var aa = this.getAllByDate(date);
+		var bb = aa.filter(function (l) { return l.scheduled; });
+
+		return bb;
+		//return this.getAllByDate(date).filter(function (l) { return l.scheduled; });
 	}
 
 	get(lectureId: number): Lecture {
@@ -70,6 +92,25 @@ export class LecturesService implements OnInit {
 		}
 
 		return lecturesBySpeaker;
+	}
+
+	getLectorName(lectorId: number): string {
+        var lector = this._speakersService.getSpeakerById(lectorId);
+
+        return lector ? lector.name : '';
+    }
+
+	getLectureDifficultyAsText(difficulty: Difficulty): string {
+		switch (difficulty) {
+			case Difficulty.SoftSkills:
+				return 'SOFT SKILLS';
+			case Difficulty.FoodAndEntertainment:
+				return 'FOOD & ENTERTAINMENT';
+			case Difficulty.DevOps:
+				return 'DEVOPS';
+		}
+
+		return '';
 	}
 
 	setScheduled(lecture: Lecture, scheduled: boolean) {

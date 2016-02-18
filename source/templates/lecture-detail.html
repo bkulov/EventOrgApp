@@ -1,0 +1,41 @@
+﻿<ion-view view-title="Lectures">
+  <ion-content class="padding">
+
+    <div style="background-color:bisque">
+      <center style="color:white">{{lecture.difficulty}}</center>
+      <h3 align="center" style="color:white">{{lecture.title}}</h3>
+    </div>
+
+    <div class="padding">
+      <div align="center">
+        <ion-button class="button button-clear" ui-sref="tab.speaker-detail({ speakerId: lecture.lectorId })">
+          <h4>{{getLectorName(lecture.lectorId)}}</h4>
+        </ion-button>
+      </div>
+
+      <p align="center">{{toLocaleDateString(lecture.startTime)}} {{lecture.startTime.toLocaleTimeString()}} - {{lecture.endTime.toLocaleTimeString()}}</p>
+    </div>
+
+    <div align="center">
+      <ion-button class="button button-clear icon-left {{lecture.scheduled ? 'ion-minus-circled' : 'ion-plus-circled'}}" style="color:red"
+                  ng-click="setSchedule(!lecture.scheduled)">
+        {{lecture.scheduled ? 'Remove from' : 'Add to'}} schedule
+      </ion-button>
+    </div>
+
+    <div class="padding" align="center">
+      <p align="center" style="color:gray">Rate the lecture</p>
+      <ion-button class="button button-clear icon {{lecture.rating > 0 ? 'ion-ios-star' : 'ion-ios-star-outline'}}" ng-click="setRating(1)"></ion-button>
+      <ion-button class="button button-clear icon {{lecture.rating > 1 ? 'ion-ios-star' : 'ion-ios-star-outline'}}" ng-click="setRating(2)"></ion-button>
+      <ion-button class="button button-clear icon {{lecture.rating > 2 ? 'ion-ios-star' : 'ion-ios-star-outline'}}" ng-click="setRating(3)"></ion-button>
+      <ion-button class="button button-clear icon {{lecture.rating > 3 ? 'ion-ios-star' : 'ion-ios-star-outline'}}" ng-click="setRating(4)"></ion-button>
+      <ion-button class="button button-clear icon {{lecture.rating > 4 ? 'ion-ios-star' : 'ion-ios-star-outline'}}" ng-click="setRating(5)"></ion-button>
+    </div>
+
+    <div class="padding">
+      <p align="justify">
+        {{lecture.description}}
+      </p>
+    </div>
+  </ion-content>
+</ion-view>
