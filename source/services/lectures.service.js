@@ -82,10 +82,10 @@ System.register(['angular2/core', './lectures-mock', './speakers.service', './di
                 };
                 LecturesService.prototype.getScheduledByDate = function (date) {
                     var dateAsString = date.toLocaleDateString();
-                    var lecturesForDate = this._lecturesByDate.get(dateAsString);
+                    var lecturesForDate = this._scheduledLecturesByDate.get(dateAsString);
                     if (lecturesForDate === undefined) {
                         lecturesForDate = this.getAllByDate(date).filter(function (l) { return l.scheduled; });
-                        this._lecturesByDate.set(dateAsString, lecturesForDate);
+                        this._scheduledLecturesByDate.set(dateAsString, lecturesForDate);
                     }
                     return lecturesForDate;
                 };

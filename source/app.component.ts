@@ -2,10 +2,10 @@ import {Component} from 'angular2/core';
 import {RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS} from 'angular2/router';
 
 import {SpeakersService} from './services/speakers.service';
-import {Speaker} from './services/speaker';
 import {AgendaComponent} from './agenda.component';
 import {LecturesService} from './services/lectures.service';
 import {LecturesComponent} from './lectures.component';
+import {SpeakersComponent} from './speakers.component';
 
 @RouteConfig([
     {
@@ -20,22 +20,22 @@ import {LecturesComponent} from './lectures.component';
     }, {
         path: '/lecture/:id',
         name: 'LectureDetail',
-        component: AgendaComponent
+        component: LecturesComponent
     }, {
         path: '/speakers',
         name: 'Speakers',
-        component: AgendaComponent
+        component: SpeakersComponent
     }, {
         path: '/speaker/:id',
         name: 'SpeakerDetail',
-        component: AgendaComponent
+        component: SpeakersComponent
     }
 ])
 
 @Component({
 	selector: 'event-app',
 	template: `
-		<button (click)="goBack()">back</button><h2>Selected tab</h2>
+		<button (click)="goBack()">back</button>
 		<nav>
 			<a [routerLink]="['Agenda']">Agenda</a>
 			<a [routerLink]="['Lectures']">Lectures</a>
@@ -44,7 +44,7 @@ import {LecturesComponent} from './lectures.component';
 		<router-outlet></router-outlet>
 	`,
 	providers: [SpeakersService, LecturesService, ROUTER_PROVIDERS],
-	directives: [ROUTER_DIRECTIVES, AgendaComponent]
+	directives: [ROUTER_DIRECTIVES]
 
 })
 export class EventApp{

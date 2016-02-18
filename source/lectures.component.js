@@ -25,7 +25,7 @@ System.register(['angular2/core', './lectures-list.component'], function(exports
                 LecturesComponent = __decorate([
                     core_1.Component({
                         selector: 'lectures',
-                        template: "\n\t<div class=\"padding\">\n\t\t<lectures-list [showOnlyScheduled]=\"false\"></lectures-list>\n\t</div>\n\t",
+                        template: "\n\t<div class=\"padding\">\n\t\t<lectures-list [title]=\"'Lectures'\" [showOnlyScheduled]=\"false\" [title1]=\"2322\"></lectures-list>\n\t</div>\n\t",
                         directives: [lectures_list_component_1.LecturesListComponent]
                     }), 
                     __metadata('design:paramtypes', [])

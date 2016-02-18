@@ -43,6 +43,10 @@ System.register(['angular2/core', './services/lectures.service'], function(expor
                 };
                 __decorate([
                     core_1.Input(), 
+                    __metadata('design:type', String)
+                ], LecturesListComponent.prototype, "title", void 0);
+                __decorate([
+                    core_1.Input(), 
                     __metadata('design:type', Boolean)
                 ], LecturesListComponent.prototype, "showOnlyScheduled", void 0);
                 LecturesListComponent = __decorate([

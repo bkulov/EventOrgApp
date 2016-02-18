@@ -6,7 +6,7 @@ import {LecturesListComponent} from './lectures-list.component';
 	selector: 'lectures',
 	template: `
 	<div class="padding">
-		<lectures-list [showOnlyScheduled]="false"></lectures-list>
+		<lectures-list [title]="'Lectures'" [showOnlyScheduled]="false" [title1]="2322"></lectures-list>
 	</div>
 	`,
 	directives: [LecturesListComponent]

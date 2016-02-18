@@ -11,6 +11,7 @@ import {Difficulty} from './services/difficulty';
 })
 export class LecturesListComponent implements OnInit {
 	public dates: Date[] = [];
+	@Input() title: string;
 	@Input() showOnlyScheduled: boolean = false;
 
 	constructor(private _lecturesService: LecturesService) { }

@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/router', './services/speakers.service', './agenda.component', './services/lectures.service', './lectures.component'], function(exports_1) {
+System.register(['angular2/core', 'angular2/router', './services/speakers.service', './agenda.component', './services/lectures.service', './lectures.component', './speakers.component'], function(exports_1) {
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -8,7 +8,7 @@ System.register(['angular2/core', 'angular2/router', './services/speakers.servic
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, router_1, speakers_service_1, agenda_component_1, lectures_service_1, lectures_component_1;
+    var core_1, router_1, speakers_service_1, agenda_component_1, lectures_service_1, lectures_component_1, speakers_component_1;
     var EventApp;
     return {
         setters:[
@@ -29,6 +29,9 @@ System.register(['angular2/core', 'angular2/router', './services/speakers.servic
             },
             function (lectures_component_1_1) {
                 lectures_component_1 = lectures_component_1_1;
+            },
+            function (speakers_component_1_1) {
+                speakers_component_1 = speakers_component_1_1;
             }],
         execute: function() {
             EventApp = (function () {
@@ -51,22 +54,22 @@ System.register(['angular2/core', 'angular2/router', './services/speakers.servic
                         }, {
                             path: '/lecture/:id',
                             name: 'LectureDetail',
-                            component: agenda_component_1.AgendaComponent
+                            component: lectures_component_1.LecturesComponent
                         }, {
                             path: '/speakers',
                             name: 'Speakers',
-                            component: agenda_component_1.AgendaComponent
+                            component: speakers_component_1.SpeakersComponent
                         }, {
                             path: '/speaker/:id',
                             name: 'SpeakerDetail',
-                            component: agenda_component_1.AgendaComponent
+                            component: speakers_component_1.SpeakersComponent
                         }
                     ]),
                     core_1.Component({
                         selector: 'event-app',
-                        template: "\n\t\t<button (click)=\"goBack()\">back</button><h2>Selected tab</h2>\n\t\t<nav>\n\t\t\t<a [routerLink]=\"['Agenda']\">Agenda</a>\n\t\t\t<a [routerLink]=\"['Lectures']\">Lectures</a>\n\t\t\t<a [routerLink]=\"['Speakers']\">Speakers</a>\n\t\t</nav>\n\t\t<router-outlet></router-outlet>\n\t",
+                        template: "\n\t\t<button (click)=\"goBack()\">back</button>\n\t\t<nav>\n\t\t\t<a [routerLink]=\"['Agenda']\">Agenda</a>\n\t\t\t<a [routerLink]=\"['Lectures']\">Lectures</a>\n\t\t\t<a [routerLink]=\"['Speakers']\">Speakers</a>\n\t\t</nav>\n\t\t<router-outlet></router-outlet>\n\t",
                         providers: [speakers_service_1.SpeakersService, lectures_service_1.LecturesService, router_1.ROUTER_PROVIDERS],
-                        directives: [router_1.ROUTER_DIRECTIVES, agenda_component_1.AgendaComponent]
+                        directives: [router_1.ROUTER_DIRECTIVES]
                     }), 
                     __metadata('design:paramtypes', [])
                 ], EventApp);
