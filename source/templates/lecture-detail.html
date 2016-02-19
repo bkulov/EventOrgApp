@@ -1,41 +1,46 @@
-﻿<ion-view view-title="Lectures">
-  <ion-content class="padding">
-
+﻿<div class="padding">
     <div style="background-color:bisque">
-      <center style="color:white">{{lecture.difficulty}}</center>
-      <h3 align="center" style="color:white">{{lecture.title}}</h3>
+        <center style="color:white">{{getDifficulty()}}</center>
+        <h3 align="center" style="color:white">{{lecture.title}}</h3>
     </div>
 
     <div class="padding">
-      <div align="center">
-        <ion-button class="button button-clear" ui-sref="tab.speaker-detail({ speakerId: lecture.lectorId })">
-          <h4>{{getLectorName(lecture.lectorId)}}</h4>
-        </ion-button>
-      </div>
+        <div align="center">
+            <button ui-sref="tab.speaker-detail({ speakerId: lecture.lectorId })">
+                <h4>{{getLectorName()}}</h4>
+            </button>
+        </div>
 
-      <p align="center">{{toLocaleDateString(lecture.startTime)}} {{lecture.startTime.toLocaleTimeString()}} - {{lecture.endTime.toLocaleTimeString()}}</p>
+        <p align="center">{{toLocaleDateString(lecture.startTime)}} {{lecture.startTime.toLocaleTimeString()}} - {{lecture.endTime.toLocaleTimeString()}}</p>
     </div>
 
     <div align="center">
-      <ion-button class="button button-clear icon-left {{lecture.scheduled ? 'ion-minus-circled' : 'ion-plus-circled'}}" style="color:red"
-                  ng-click="setSchedule(!lecture.scheduled)">
-        {{lecture.scheduled ? 'Remove from' : 'Add to'}} schedule
-      </ion-button>
+        <button style="color:red" (click)="setSchedule(!lecture.scheduled)">
+            <img width="16" src="{{lecture.scheduled ? './source/img/icons/minus-48.png' : './source/img/icons/plus-48.png'}}"/>
+            {{lecture.scheduled ? 'Remove from' : 'Add to'}} schedule
+        </button>
     </div>
 
     <div class="padding" align="center">
-      <p align="center" style="color:gray">Rate the lecture</p>
-      <ion-button class="button button-clear icon {{lecture.rating > 0 ? 'ion-ios-star' : 'ion-ios-star-outline'}}" ng-click="setRating(1)"></ion-button>
-      <ion-button class="button button-clear icon {{lecture.rating > 1 ? 'ion-ios-star' : 'ion-ios-star-outline'}}" ng-click="setRating(2)"></ion-button>
-      <ion-button class="button button-clear icon {{lecture.rating > 2 ? 'ion-ios-star' : 'ion-ios-star-outline'}}" ng-click="setRating(3)"></ion-button>
-      <ion-button class="button button-clear icon {{lecture.rating > 3 ? 'ion-ios-star' : 'ion-ios-star-outline'}}" ng-click="setRating(4)"></ion-button>
-      <ion-button class="button button-clear icon {{lecture.rating > 4 ? 'ion-ios-star' : 'ion-ios-star-outline'}}" ng-click="setRating(5)"></ion-button>
+        <p align="center" style="color:gray">Rate the lecture</p>
+        <button type="submit" (click)="setRating(1)">
+            <img src="{{lecture.rating > 0 ? './source/img/icons/star-filled-64.png' : './source/img/icons/star-64.png'}}" width="20">
+        </button>
+        <button type="submit" (click)="setRating(2)">
+            <img src="{{lecture.rating > 1 ? './source/img/icons/star-filled-64.png' : './source/img/icons/star-64.png'}}" width="20">
+        </button>
+        <button type="submit" (click)="setRating(3)">
+            <img src="{{lecture.rating > 2 ? './source/img/icons/star-filled-64.png' : './source/img/icons/star-64.png'}}" width="20">
+        </button>
+        <button type="submit" (click)="setRating(4)">
+            <img src="{{lecture.rating > 3 ? './source/img/icons/star-filled-64.png' : './source/img/icons/star-64.png'}}" width="20">
+        </button>
+        <button type="submit" (click)="setRating(5)">
+            <img src="{{lecture.rating > 4 ? './source/img/icons/star-filled-64.png' : './source/img/icons/star-64.png'}}" width="20">
+        </button>
     </div>
 
     <div class="padding">
-      <p align="justify">
-        {{lecture.description}}
-      </p>
+        <p align="justify">{{lecture.description}}</p>
     </div>
-  </ion-content>
-</ion-view>
+</div>

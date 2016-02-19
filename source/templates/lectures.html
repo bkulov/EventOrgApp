@@ -6,7 +6,7 @@
         <h4 align="center">{{toLocaleDateString(date)}}</h4>
 
         <ul>
-          <li *ngFor="#lecture of getLecturesByDate(date)">
+          <li *ngFor="#lecture of getLecturesByDate(date)" (click)="gotoDetail(lecture)">
             <!--<button class="icon {{lecture.scheduled ? 'ion-minus-circled' : 'ion-plus-circled'}}" style="color:red"
                         ng-click="setLectureSchedule(lecture, !lecture.scheduled); $event.stopPropagation();">
             </button>-->

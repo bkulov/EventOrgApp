@@ -128,6 +128,20 @@ System.register(['angular2/core', './lectures-mock', './speakers.service', './di
                 LecturesService.prototype.setScheduled = function (lecture, scheduled) {
                     if (lecture) {
                         lecture.scheduled = scheduled;
+                        // update cache
+                        var dateAsString = lecture.startTime.toLocaleDateString();
+                        var lecturesForDate = this._scheduledLecturesByDate.get(dateAsString);
+                        if (lecturesForDate === undefined) {
+                            lecturesForDate = [];
+                            this._scheduledLecturesByDate.set(dateAsString, lecturesForDate);
+                        }
+                        var index = lecturesForDate.indexOf(lecture);
+                        if (scheduled && index === -1) {
+                            lecturesForDate.push(lecture);
+                        }
+                        else if (!scheduled && index > -1) {
+                            lecturesForDate.splice(index, 1);
+                        }
                     }
                 };
                 LecturesService = __decorate([
