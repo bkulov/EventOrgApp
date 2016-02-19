@@ -1,5 +1,5 @@
 ﻿import {Component, OnInit} from 'angular2/core';
-import {RouteParams} from 'angular2/router';
+import {RouteParams, Router} from 'angular2/router';
 
 import {Lecture} from './services/lecture';
 import {LecturesService} from './services/lectures.service';
@@ -11,7 +11,7 @@ import {LecturesService} from './services/lectures.service';
 export class LectureDetailComponent implements OnInit {
 	lecture: Lecture;
 
-	constructor(private _lecturesService: LecturesService, private _routeParams: RouteParams) { }
+	constructor(private _lecturesService: LecturesService, private _routeParams: RouteParams, private _router: Router) { }
 
 	ngOnInit() {
 		let id = +this._routeParams.get('id');
@@ -37,4 +37,9 @@ export class LectureDetailComponent implements OnInit {
 	setRating(rating: number): void {
         this.lecture.rating = rating;
     }
+
+	gotoSpeaker(): void {
+		var link = ['SpeakerDetail', { id: this.lecture.lectorId }];
+		this._router.navigate(link);
+	}
 }

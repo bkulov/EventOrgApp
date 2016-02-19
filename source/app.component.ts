@@ -7,6 +7,7 @@ import {LecturesService} from './services/lectures.service';
 import {LecturesComponent} from './lectures.component';
 import {SpeakersComponent} from './speakers.component';
 import {LectureDetailComponent} from './lecture-detail.component';
+import {SpeakerDetailComponent} from './speaker-detail.component';
 
 @RouteConfig([
     {
@@ -29,7 +30,7 @@ import {LectureDetailComponent} from './lecture-detail.component';
     }, {
         path: '/speaker/:id',
         name: 'SpeakerDetail',
-        component: SpeakersComponent
+        component: SpeakerDetailComponent
     }
 ])
 

@@ -23,9 +23,10 @@ System.register(['angular2/core', 'angular2/router', './services/lectures.servic
             }],
         execute: function() {
             LectureDetailComponent = (function () {
-                function LectureDetailComponent(_lecturesService, _routeParams) {
+                function LectureDetailComponent(_lecturesService, _routeParams, _router) {
                     this._lecturesService = _lecturesService;
                     this._routeParams = _routeParams;
+                    this._router = _router;
                 }
                 LectureDetailComponent.prototype.ngOnInit = function () {
                     var id = +this._routeParams.get('id');
@@ -46,12 +47,16 @@ System.register(['angular2/core', 'angular2/router', './services/lectures.servic
                 LectureDetailComponent.prototype.setRating = function (rating) {
                     this.lecture.rating = rating;
                 };
+                LectureDetailComponent.prototype.gotoSpeaker = function () {
+                    var link = ['SpeakerDetail', { id: this.lecture.lectorId }];
+                    this._router.navigate(link);
+                };
                 LectureDetailComponent = __decorate([
                     core_1.Component({
                         selector: 'lecture-detail',
                         templateUrl: './source/templates/lecture-detail.html'
                     }), 
-                    __metadata('design:paramtypes', [lectures_service_1.LecturesService, router_1.RouteParams])
+                    __metadata('design:paramtypes', [lectures_service_1.LecturesService, router_1.RouteParams, router_1.Router])
                 ], LectureDetailComponent);
                 return LectureDetailComponent;
             })();

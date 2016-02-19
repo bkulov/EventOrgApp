@@ -6,7 +6,7 @@
 
     <div class="padding">
         <div align="center">
-            <button ui-sref="tab.speaker-detail({ speakerId: lecture.lectorId })">
+            <button (click)="gotoSpeaker()">
                 <h4>{{getLectorName()}}</h4>
             </button>
         </div>

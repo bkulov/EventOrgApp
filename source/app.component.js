@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/router', './services/speakers.service', './agenda.component', './services/lectures.service', './lectures.component', './speakers.component', './lecture-detail.component'], function(exports_1) {
+System.register(['angular2/core', 'angular2/router', './services/speakers.service', './agenda.component', './services/lectures.service', './lectures.component', './speakers.component', './lecture-detail.component', './speaker-detail.component'], function(exports_1) {
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -8,7 +8,7 @@ System.register(['angular2/core', 'angular2/router', './services/speakers.servic
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, router_1, speakers_service_1, agenda_component_1, lectures_service_1, lectures_component_1, speakers_component_1, lecture_detail_component_1;
+    var core_1, router_1, speakers_service_1, agenda_component_1, lectures_service_1, lectures_component_1, speakers_component_1, lecture_detail_component_1, speaker_detail_component_1;
     var EventApp;
     return {
         setters:[
@@ -35,6 +35,9 @@ System.register(['angular2/core', 'angular2/router', './services/speakers.servic
             },
             function (lecture_detail_component_1_1) {
                 lecture_detail_component_1 = lecture_detail_component_1_1;
+            },
+            function (speaker_detail_component_1_1) {
+                speaker_detail_component_1 = speaker_detail_component_1_1;
             }],
         execute: function() {
             EventApp = (function () {
@@ -65,7 +68,7 @@ System.register(['angular2/core', 'angular2/router', './services/speakers.servic
                         }, {
                             path: '/speaker/:id',
                             name: 'SpeakerDetail',
-                            component: speakers_component_1.SpeakersComponent
+                            component: speaker_detail_component_1.SpeakerDetailComponent
                         }
                     ]),
                     core_1.Component({
