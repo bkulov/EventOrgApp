@@ -40,6 +40,7 @@ System.register(['angular2/core', 'angular2/router', './services/lectures.servic
                     core_1.Component({
                         selector: 'speaker-detail',
                         templateUrl: './source/templates/speaker-detail.html',
+                        styleUrls: ['./source/css/speakers.css'],
                         directives: [router_1.ROUTER_DIRECTIVES]
                     }), 
                     __metadata('design:paramtypes', [lectures_service_1.LecturesService, speakers_service_1.SpeakersService, router_1.RouteParams])

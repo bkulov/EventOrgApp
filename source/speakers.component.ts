@@ -6,7 +6,8 @@ import {Speaker} from './services/speaker';
 
 @Component({
 	selector: 'speakers',
-	templateUrl: './source/templates/speakers.html'
+	templateUrl: './source/templates/speakers.html',
+	styleUrls: ['./source/css/speakers.css']
 })
 export class SpeakersComponent implements OnInit {
 	speakers: Speaker[] = [];

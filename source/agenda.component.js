@@ -33,7 +33,6 @@ System.register(['angular2/core', 'angular2/router', './lectures-list.component'
                     core_1.Component({
                         selector: 'agenda',
                         templateUrl: './source/templates/agenda.html',
-                        styleUrls: ['source/css/agenda.component.css'],
                         directives: [lectures_list_component_1.LecturesListComponent]
                     }), 
                     __metadata('design:paramtypes', [router_1.Router])

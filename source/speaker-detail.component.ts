@@ -9,6 +9,7 @@ import {SpeakersService} from './services/speakers.service';
 @Component({
 	selector: 'speaker-detail',
 	templateUrl: './source/templates/speaker-detail.html',
+	styleUrls: ['./source/css/speakers.css'],
 	directives: [ROUTER_DIRECTIVES]
 })
 export class SpeakerDetailComponent implements OnInit{

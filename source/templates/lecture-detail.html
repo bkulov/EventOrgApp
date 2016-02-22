@@ -6,8 +6,8 @@
 
     <div class="padding">
         <div align="center">
-            <button (click)="gotoSpeaker()">
-                <h4>{{getLectorName()}}</h4>
+            <button class="borderless" (click)="gotoSpeaker()">
+                <h3>{{getLectorName()}}</h3>
             </button>
         </div>
 
@@ -15,7 +15,7 @@
     </div>
 
     <div align="center">
-        <button style="color:red" (click)="setSchedule(!lecture.scheduled)">
+        <button class="borderless" style="color:red" (click)="setSchedule(!lecture.scheduled)">
             <img width="16" src="{{lecture.scheduled ? './source/img/icons/minus-48.png' : './source/img/icons/plus-48.png'}}"/>
             {{lecture.scheduled ? 'Remove from' : 'Add to'}} schedule
         </button>
@@ -23,19 +23,19 @@
 
     <div class="padding" align="center">
         <p align="center" style="color:gray">Rate the lecture</p>
-        <button type="submit" (click)="setRating(1)">
+        <button class="borderless" type="submit" (click)="setRating(1)">
             <img src="{{lecture.rating > 0 ? './source/img/icons/star-filled-64.png' : './source/img/icons/star-64.png'}}" width="20">
         </button>
-        <button type="submit" (click)="setRating(2)">
+        <button class="borderless" type="submit" (click)="setRating(2)">
             <img src="{{lecture.rating > 1 ? './source/img/icons/star-filled-64.png' : './source/img/icons/star-64.png'}}" width="20">
         </button>
-        <button type="submit" (click)="setRating(3)">
+        <button class="borderless" type="submit" (click)="setRating(3)">
             <img src="{{lecture.rating > 2 ? './source/img/icons/star-filled-64.png' : './source/img/icons/star-64.png'}}" width="20">
         </button>
-        <button type="submit" (click)="setRating(4)">
+        <button class="borderless" type="submit" (click)="setRating(4)">
             <img src="{{lecture.rating > 3 ? './source/img/icons/star-filled-64.png' : './source/img/icons/star-64.png'}}" width="20">
         </button>
-        <button type="submit" (click)="setRating(5)">
+        <button class="borderless" type="submit" (click)="setRating(5)">
             <img src="{{lecture.rating > 4 ? './source/img/icons/star-filled-64.png' : './source/img/icons/star-64.png'}}" width="20">
         </button>
     </div>

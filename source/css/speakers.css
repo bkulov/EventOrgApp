@@ -1,0 +1,16 @@
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+ul li {
+    list-style-type:none;
+}
+
+ul li.border {
+    border-style:solid;
+    border-width:thin;
+    border-color: #d3d3d3;
+    margin: 5px;
+    padding: 5px;
+}

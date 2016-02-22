@@ -2,15 +2,22 @@
     <h1 align="center">Speakers</h1>
 
     <ul>
-        <li *ngFor="#speaker of speakers" (click)="gotoDetails(speaker)">
+        <li class="border" *ngFor="#speaker of speakers" (click)="gotoDetails(speaker)">
 
-            <img src="{{speaker.photo}}">
-            <h2>{{speaker.name}}</h2>
-            <p>{{speaker.jobTitle}} at {{speaker.company}}</p>
-
-            <!--Icon
-            <i class="icon ion-chevron-right icon-accessory"></i>-->
-
+            <table style="width:100%">
+                <tr>
+                    <td>
+                        <img style="width:80px" src="{{speaker.photo}}">
+                    </td>
+                    <td>
+                        <h2>{{speaker.name}}</h2>
+                        <p>{{speaker.jobTitle}} at {{speaker.company}}</p>
+                    </td>
+                    <td>
+                        <img style="height:30px; width:20px" src="./source/img/icons/forward-50.png" />
+                    </td>
+                </tr>
+            </table>
         </li>
     </ul>
 </div>

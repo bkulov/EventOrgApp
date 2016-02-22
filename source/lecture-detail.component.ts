@@ -6,7 +6,8 @@ import {LecturesService} from './services/lectures.service';
 
 @Component({
 	selector: 'lecture-detail',
-	templateUrl: './source/templates/lecture-detail.html'
+	templateUrl: './source/templates/lecture-detail.html',
+	styleUrls: ['./source/css/lectures.component.css']
 })
 export class LectureDetailComponent implements OnInit {
 	lecture: Lecture;
