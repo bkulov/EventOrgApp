@@ -14,3 +14,9 @@ ul li.border {
     margin: 5px;
     padding: 5px;
 }
+
+button.borderless {
+    padding:0;
+    border: none;
+    background: none;
+}

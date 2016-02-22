@@ -46,4 +46,8 @@ export class LecturesListComponent implements OnInit {
         let link = ['LectureDetail', { id: lecture.id }];
         this._router.navigate(link);
 	}
+
+	setSchedule(lecture: Lecture, scheduled: boolean): void {
+		this._lecturesService.setScheduled(lecture, scheduled);
+	}
 }

@@ -14,10 +14,12 @@
                       </td>
 
                       <td>
-                          <!--<button class="icon {{lecture.scheduled ? 'ion-minus-circled' : 'ion-plus-circled'}}" style="color:red"
-            ng-click="setLectureSchedule(lecture, !lecture.scheduled); $event.stopPropagation();">
-            </button>-->
+                          <button class="borderless" (click)="setSchedule(lecture, !lecture.scheduled); $event.stopPropagation();">
+                              <img width="24" src="{{lecture.scheduled ? './source/img/icons/minus-48.png' : './source/img/icons/plus-48.png'}}" />
+                          </button>
+                      </td>
 
+                      <td>
                           <p>{{lecture.startTime.toLocaleTimeString()}}</p>
 
                           <h2>{{lecture.title}}</h2>

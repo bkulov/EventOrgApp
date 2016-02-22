@@ -52,6 +52,9 @@ System.register(['angular2/core', 'angular2/router', './services/lectures.servic
                     var link = ['LectureDetail', { id: lecture.id }];
                     this._router.navigate(link);
                 };
+                LecturesListComponent.prototype.setSchedule = function (lecture, scheduled) {
+                    this._lecturesService.setScheduled(lecture, scheduled);
+                };
                 __decorate([
                     core_1.Input(), 
                     __metadata('design:type', String)
