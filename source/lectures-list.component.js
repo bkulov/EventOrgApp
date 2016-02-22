@@ -45,6 +45,9 @@ System.register(['angular2/core', 'angular2/router', './services/lectures.servic
                 LecturesListComponent.prototype.getDifficulty = function (difficulty) {
                     return this._lecturesService.getLectureDifficultyAsText(difficulty);
                 };
+                LecturesListComponent.prototype.getDifficultyColor = function (difficulty) {
+                    return this._lecturesService.getLectureDifficultyColor(difficulty);
+                };
                 LecturesListComponent.prototype.gotoDetail = function (lecture) {
                     var link = ['LectureDetail', { id: lecture.id }];
                     this._router.navigate(link);

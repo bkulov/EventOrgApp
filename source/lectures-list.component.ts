@@ -38,6 +38,10 @@ export class LecturesListComponent implements OnInit {
 		return this._lecturesService.getLectureDifficultyAsText(difficulty);
 	}
 
+	getDifficultyColor(difficulty: Difficulty): string {
+		return this._lecturesService.getLectureDifficultyColor(difficulty);
+	}
+
 	gotoDetail(lecture: Lecture) {
         let link = ['LectureDetail', { id: lecture.id }];
         this._router.navigate(link);

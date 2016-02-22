@@ -6,17 +6,27 @@
         <h4 align="center">{{toLocaleDateString(date)}}</h4>
 
         <ul>
-          <li *ngFor="#lecture of getLecturesByDate(date)" (click)="gotoDetail(lecture)">
-            <!--<button class="icon {{lecture.scheduled ? 'ion-minus-circled' : 'ion-plus-circled'}}" style="color:red"
-                        ng-click="setLectureSchedule(lecture, !lecture.scheduled); $event.stopPropagation();">
+          <li *ngFor="#lecture of getLecturesByDate(date)" (click)="gotoDetail(lecture)" class="border">
+              <table style="width:100%">
+                  <tr>
+                      <td>
+                          <div style="width:5px; height:100px; background-color:{{getDifficultyColor(lecture.difficulty)}}"></div>
+                      </td>
+
+                      <td>
+                          <!--<button class="icon {{lecture.scheduled ? 'ion-minus-circled' : 'ion-plus-circled'}}" style="color:red"
+            ng-click="setLectureSchedule(lecture, !lecture.scheduled); $event.stopPropagation();">
             </button>-->
 
-            <p>{{lecture.startTime.toLocaleTimeString()}}</p>
+                          <p>{{lecture.startTime.toLocaleTimeString()}}</p>
 
-            <h2>{{lecture.title}}</h2>
-            <p>{{getLectorName(lecture.lectorId)}}</p>
+                          <h2>{{lecture.title}}</h2>
+                          <p>{{getLectorName(lecture.lectorId)}}</p>
 
-            <p align="right" style="color:bisque">{{getDifficulty(lecture.difficulty)}}</p>
+                          <p align="right" style="color:{{getDifficultyColor(lecture.difficulty)}}">{{getDifficulty(lecture.difficulty)}}</p>
+                      </td>
+                  </tr>
+              </table>
           </li>
         </ul>
 

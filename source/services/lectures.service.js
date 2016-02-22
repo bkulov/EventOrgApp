@@ -125,6 +125,17 @@ System.register(['angular2/core', './lectures-mock', './speakers.service', './di
                     }
                     return '';
                 };
+                LecturesService.prototype.getLectureDifficultyColor = function (difficulty) {
+                    switch (difficulty) {
+                        case difficulty_1.Difficulty.SoftSkills:
+                            return '#ffe4c4';
+                        case difficulty_1.Difficulty.FoodAndEntertainment:
+                            return '#20b2aa';
+                        case difficulty_1.Difficulty.DevOps:
+                            return '#1e90ff';
+                    }
+                    return '#000';
+                };
                 LecturesService.prototype.setScheduled = function (lecture, scheduled) {
                     if (lecture) {
                         lecture.scheduled = scheduled;

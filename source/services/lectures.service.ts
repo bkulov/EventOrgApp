@@ -135,6 +135,19 @@ export class LecturesService {
 		return '';
 	}
 
+	getLectureDifficultyColor(difficulty: Difficulty): string {
+		switch (difficulty) {
+			case Difficulty.SoftSkills:
+				return '#ffe4c4';
+			case Difficulty.FoodAndEntertainment:
+				return '#20b2aa';
+			case Difficulty.DevOps:
+				return '#1e90ff';
+		}
+
+		return '#000';
+	}
+
 	setScheduled(lecture: Lecture, scheduled: boolean) {
 		if (lecture) {
 			lecture.scheduled = scheduled;
