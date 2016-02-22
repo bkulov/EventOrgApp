@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/router', './services/speakers.service', './agenda.component', './services/lectures.service', './lectures.component', './speakers.component', './lecture-detail.component', './speaker-detail.component'], function(exports_1) {
+System.register(['angular2/core', 'angular2/router', './services/speakers.service', './agenda.component', './services/lectures.service', './lectures.component', './speakers.component', './lecture-detail.component', './speaker-detail.component', './login-main.component', './loggedin-o365.component', './services/office365.service'], function(exports_1) {
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -8,7 +8,7 @@ System.register(['angular2/core', 'angular2/router', './services/speakers.servic
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, router_1, speakers_service_1, agenda_component_1, lectures_service_1, lectures_component_1, speakers_component_1, lecture_detail_component_1, speaker_detail_component_1;
+    var core_1, router_1, speakers_service_1, agenda_component_1, lectures_service_1, lectures_component_1, speakers_component_1, lecture_detail_component_1, speaker_detail_component_1, login_main_component_1, loggedin_o365_component_1, office365_service_1;
     var EventApp;
     return {
         setters:[
@@ -38,6 +38,15 @@ System.register(['angular2/core', 'angular2/router', './services/speakers.servic
             },
             function (speaker_detail_component_1_1) {
                 speaker_detail_component_1 = speaker_detail_component_1_1;
+            },
+            function (login_main_component_1_1) {
+                login_main_component_1 = login_main_component_1_1;
+            },
+            function (loggedin_o365_component_1_1) {
+                loggedin_o365_component_1 = loggedin_o365_component_1_1;
+            },
+            function (office365_service_1_1) {
+                office365_service_1 = office365_service_1_1;
             }],
         execute: function() {
             EventApp = (function () {
@@ -49,10 +58,18 @@ System.register(['angular2/core', 'angular2/router', './services/speakers.servic
                 EventApp = __decorate([
                     router_1.RouteConfig([
                         {
+                            path: '/login',
+                            name: 'LoginMain',
+                            component: login_main_component_1.LoginMainComponent,
+                            useAsDefault: true
+                        }, {
+                            path: '/logedino365',
+                            name: 'LoggedInO365',
+                            component: loggedin_o365_component_1.LoggedInO365Component
+                        }, {
                             path: '/agenda',
                             name: 'Agenda',
-                            component: agenda_component_1.AgendaComponent,
-                            useAsDefault: true
+                            component: agenda_component_1.AgendaComponent
                         }, {
                             path: '/lectures',
                             name: 'Lectures',
@@ -74,7 +91,7 @@ System.register(['angular2/core', 'angular2/router', './services/speakers.servic
                     core_1.Component({
                         selector: 'event-app',
                         template: "\n\t\t<button (click)=\"goBack()\">back</button>\n\t\t<nav>\n\t\t\t<a [routerLink]=\"['Agenda']\">Agenda</a>\n\t\t\t<a [routerLink]=\"['Lectures']\">Lectures</a>\n\t\t\t<a [routerLink]=\"['Speakers']\">Speakers</a>\n\t\t</nav>\n\t\t<router-outlet></router-outlet>\n\t",
-                        providers: [speakers_service_1.SpeakersService, lectures_service_1.LecturesService, router_1.ROUTER_PROVIDERS],
+                        providers: [speakers_service_1.SpeakersService, lectures_service_1.LecturesService, router_1.ROUTER_PROVIDERS, office365_service_1.Office365Service],
                         directives: [router_1.ROUTER_DIRECTIVES]
                     }), 
                     __metadata('design:paramtypes', [])

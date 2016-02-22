@@ -8,13 +8,24 @@ import {LecturesComponent} from './lectures.component';
 import {SpeakersComponent} from './speakers.component';
 import {LectureDetailComponent} from './lecture-detail.component';
 import {SpeakerDetailComponent} from './speaker-detail.component';
+import {LoginMainComponent} from './login-main.component';
+import {LoggedInO365Component} from './loggedin-o365.component';
+import {Office365Service} from './services/office365.service';
 
 @RouteConfig([
-    {
+	{
+        path: '/login',
+        name: 'LoginMain',
+        component: LoginMainComponent,
+        useAsDefault: true
+	}, {
+        path: '/logedino365',
+        name: 'LoggedInO365',
+        component: LoggedInO365Component
+	}, {
         path: '/agenda',
         name: 'Agenda',
-        component: AgendaComponent,
-        useAsDefault: true
+        component: AgendaComponent
     }, {
         path: '/lectures',
         name: 'Lectures',
@@ -45,7 +56,7 @@ import {SpeakerDetailComponent} from './speaker-detail.component';
 		</nav>
 		<router-outlet></router-outlet>
 	`,
-	providers: [SpeakersService, LecturesService, ROUTER_PROVIDERS],
+	providers: [SpeakersService, LecturesService, ROUTER_PROVIDERS, Office365Service],
 	directives: [ROUTER_DIRECTIVES]
 
 })

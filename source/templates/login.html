@@ -1,15 +1,16 @@
-<ion-view view-title="Login">
-    <ion-content class="padding">
-        <div class="list list-inset">
-            <label class="item item-input">
-                <input type="text" ng-model="user.username" placeholder="Enter your username">
-            </label>
+<div class="padding">
 
-            <label class="item item-input">
-                <input type="text" ng-model="user.password" placeholder="Enter your password">
-            </label>
+    <h1>Login with:</h1>
+
+    <div>
+        <div>
+            <button (click)="loginOffice365()"><img width="16" src="./source/img/icons/office-365.png"> Office 365</button>
         </div>
-
-        <button class="button button-block button-calm" ng-click="login()">Login</button>
-    </ion-content>
-</ion-view>
+        <div>
+            <button><img width="16" src="./source/img/icons/google-plus-icon.png"> GMail</button>
+        </div>
+        <div>
+            <button><img width="16" src="./source/img/icons/facebook-icon.png"> Facebook</button>
+        </div>
+    </div>
+</div>
