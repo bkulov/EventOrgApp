@@ -1,4 +1,4 @@
-System.register(['angular2/core'], function(exports_1) {
+System.register(['angular2/core', './utils.service'], function(exports_1) {
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -8,19 +8,27 @@ System.register(['angular2/core'], function(exports_1) {
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1;
+    var core_1, utils_service_1;
     var Office365Service;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
+            },
+            function (utils_service_1_1) {
+                utils_service_1 = utils_service_1_1;
             }],
         execute: function() {
             Office365Service = (function () {
-                function Office365Service() {
+                function Office365Service(_utilsService) {
+                    this._utilsService = _utilsService;
                 }
                 Office365Service.prototype.login = function () {
-                    window.location.href = 'https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=369c3963-47ad-44c2-80a0-012f6c726aa2&redirect_uri=http%3A%2F%2Flocalhost:3000%2Flogedino365&response_type=code&scope=https%3A%2F%2Foutlook.office.com%2Fmail.read';
+                    var aa = this._utilsService.loadJSON('/O365_id.json', (function (content) {
+                        var o365Config = JSON.parse(content);
+                        console.log(o365Config.url);
+                        window.location.href = o365Config.url;
+                    }));
                 };
                 Office365Service.prototype.setLoginData = function (code, sessionState) {
                     this.code = code;
@@ -28,7 +36,7 @@ System.register(['angular2/core'], function(exports_1) {
                 };
                 Office365Service = __decorate([
                     core_1.Injectable(), 
-                    __metadata('design:paramtypes', [])
+                    __metadata('design:paramtypes', [utils_service_1.UtilsService])
                 ], Office365Service);
                 return Office365Service;
             })();
