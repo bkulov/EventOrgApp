@@ -12,8 +12,6 @@ export class Office365Service {
 		var aa = this._utilsService.loadJSON('/O365_id.json', ((content: string) => {
 			var o365Config = JSON.parse(content);
 
-			console.log(o365Config.url);
-
 			window.location.href = o365Config.url;
 		}));
 	}

@@ -26,7 +26,6 @@ System.register(['angular2/core', './utils.service'], function(exports_1) {
                 Office365Service.prototype.login = function () {
                     var aa = this._utilsService.loadJSON('/O365_id.json', (function (content) {
                         var o365Config = JSON.parse(content);
-                        console.log(o365Config.url);
                         window.location.href = o365Config.url;
                     }));
                 };

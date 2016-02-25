@@ -12,6 +12,7 @@ import {LoginMainComponent} from './login-main.component';
 import {LoggedInO365Component} from './loggedin-o365.component';
 import {Office365Service} from './services/office365.service';
 import {UtilsService} from './services/utils.service';
+import {GoogleService} from './services/google.service';
 
 //loggedingoogle
 @RouteConfig([
@@ -58,7 +59,7 @@ import {UtilsService} from './services/utils.service';
 		</nav>
 		<router-outlet></router-outlet>
 	`,
-	providers: [SpeakersService, LecturesService, ROUTER_PROVIDERS, Office365Service, UtilsService],
+	providers: [SpeakersService, LecturesService, ROUTER_PROVIDERS, Office365Service, UtilsService, GoogleService],
 	directives: [ROUTER_DIRECTIVES]
 
 })
