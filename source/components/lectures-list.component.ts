@@ -31,7 +31,7 @@ export class LecturesListComponent implements OnInit {
 
 	getLecturesByDate(date: Date): Lecture[] {
 		return this.showOnlyScheduled ? this._lecturesService.getScheduledByDate(date)
-											 : this._lecturesService.getAllByDate(date);
+									  : this._lecturesService.getAllByDate(date);
 	}
 
 	getDifficulty(difficulty: Difficulty): string {

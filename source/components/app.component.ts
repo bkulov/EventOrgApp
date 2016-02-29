@@ -13,8 +13,9 @@ import {LoggedInO365Component} from './loggedin-o365.component';
 import {Office365Service} from '../services/office365.service';
 import {UtilsService} from '../services/utils.service';
 import {GoogleService} from '../services/google.service';
+import {LoginFacebookComponent} from './login-facebook.component';
+import {FacebookService} from '../services/facebook.service';
 
-//loggedingoogle
 @RouteConfig([
 	{
         path: '/login',
@@ -45,7 +46,11 @@ import {GoogleService} from '../services/google.service';
         path: '/speaker/:id',
         name: 'SpeakerDetail',
         component: SpeakerDetailComponent
-    }
+    }, {
+		path: '/loginfb',
+		name: 'LoginFB',
+		component: LoginFacebookComponent
+	}
 ])
 
 @Component({
@@ -59,7 +64,7 @@ import {GoogleService} from '../services/google.service';
 		</nav>
 		<router-outlet></router-outlet>
 	`,
-	providers: [SpeakersService, LecturesService, ROUTER_PROVIDERS, Office365Service, UtilsService, GoogleService],
+	providers: [SpeakersService, LecturesService, ROUTER_PROVIDERS, Office365Service, UtilsService, GoogleService, FacebookService],
 	directives: [ROUTER_DIRECTIVES]
 
 })

@@ -3,6 +3,8 @@ import {Router} from 'angular2/router';
 
 import {UtilsService} from './utils.service';
 
+declare var gapi: any;
+
 @Injectable()
 export class GoogleService {
 	private _clientConfig: Object;
