@@ -1,13 +1,13 @@
 import {Component, OnInit, Input} from 'angular2/core';
 import {Router} from 'angular2/router';
 
-import {Lecture} from './services/lecture';
-import {LecturesService} from './services/lectures.service';
-import {Difficulty} from './services/difficulty';
+import {Lecture} from '../services/lecture';
+import {LecturesService} from '../services/lectures.service';
+import {Difficulty} from '../services/difficulty';
 
 @Component({
 	selector: 'lectures-list',
-	templateUrl: './source/templates/lectures.html',
+	templateUrl: '/source/templates/lectures.html',
 	styleUrls: ['source/css/lectures.component.css']
 })
 export class LecturesListComponent implements OnInit {

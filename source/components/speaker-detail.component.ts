@@ -1,15 +1,15 @@
 ﻿import {Component, OnInit} from 'angular2/core';
 import {RouteParams, ROUTER_DIRECTIVES} from 'angular2/router';
 
-import {Lecture} from './services/lecture';
-import {Speaker} from './services/speaker';
-import {LecturesService} from './services/lectures.service';
-import {SpeakersService} from './services/speakers.service';
+import {Lecture} from '../services/lecture';
+import {Speaker} from '../services/speaker';
+import {LecturesService} from '../services/lectures.service';
+import {SpeakersService} from '../services/speakers.service';
 
 @Component({
 	selector: 'speaker-detail',
-	templateUrl: './source/templates/speaker-detail.html',
-	styleUrls: ['./source/css/speakers.css'],
+	templateUrl: '/source/templates/speaker-detail.html',
+	styleUrls: ['source/css/speakers.css'],
 	directives: [ROUTER_DIRECTIVES]
 })
 export class SpeakerDetailComponent implements OnInit{

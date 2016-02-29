@@ -32,7 +32,7 @@ System.register(['angular2/core', 'angular2/router', './lectures-list.component'
                 AgendaComponent = __decorate([
                     core_1.Component({
                         selector: 'agenda',
-                        templateUrl: './source/templates/agenda.html',
+                        templateUrl: '/source/templates/agenda.html',
                         directives: [lectures_list_component_1.LecturesListComponent]
                     }), 
                     __metadata('design:paramtypes', [router_1.Router])

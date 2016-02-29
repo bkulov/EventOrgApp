@@ -1,18 +1,18 @@
 import {Component} from 'angular2/core';
 import {RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS} from 'angular2/router';
 
-import {SpeakersService} from './services/speakers.service';
+import {SpeakersService} from '../services/speakers.service';
 import {AgendaComponent} from './agenda.component';
-import {LecturesService} from './services/lectures.service';
+import {LecturesService} from '../services/lectures.service';
 import {LecturesComponent} from './lectures.component';
 import {SpeakersComponent} from './speakers.component';
 import {LectureDetailComponent} from './lecture-detail.component';
 import {SpeakerDetailComponent} from './speaker-detail.component';
 import {LoginMainComponent} from './login-main.component';
 import {LoggedInO365Component} from './loggedin-o365.component';
-import {Office365Service} from './services/office365.service';
-import {UtilsService} from './services/utils.service';
-import {GoogleService} from './services/google.service';
+import {Office365Service} from '../services/office365.service';
+import {UtilsService} from '../services/utils.service';
+import {GoogleService} from '../services/google.service';
 
 //loggedingoogle
 @RouteConfig([

@@ -5,7 +5,7 @@ import {LecturesListComponent} from './lectures-list.component';
 
 @Component({
 	selector: 'agenda',
-	templateUrl: './source/templates/agenda.html',
+	templateUrl: '/source/templates/agenda.html',
 	directives: [LecturesListComponent]
 })
 export class AgendaComponent {

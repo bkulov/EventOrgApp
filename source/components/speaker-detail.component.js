@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/router', './services/lectures.service', './services/speakers.service'], function(exports_1) {
+System.register(['angular2/core', 'angular2/router', '../services/lectures.service', '../services/speakers.service'], function(exports_1) {
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -39,8 +39,8 @@ System.register(['angular2/core', 'angular2/router', './services/lectures.servic
                 SpeakerDetailComponent = __decorate([
                     core_1.Component({
                         selector: 'speaker-detail',
-                        templateUrl: './source/templates/speaker-detail.html',
-                        styleUrls: ['./source/css/speakers.css'],
+                        templateUrl: '/source/templates/speaker-detail.html',
+                        styleUrls: ['source/css/speakers.css'],
                         directives: [router_1.ROUTER_DIRECTIVES]
                     }), 
                     __metadata('design:paramtypes', [lectures_service_1.LecturesService, speakers_service_1.SpeakersService, router_1.RouteParams])

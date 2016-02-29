@@ -1,4 +1,4 @@
-System.register(['angular2/core', './services/office365.service', './services/google.service'], function(exports_1) {
+System.register(['angular2/core', '../services/office365.service', '../services/google.service'], function(exports_1) {
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -36,7 +36,7 @@ System.register(['angular2/core', './services/office365.service', './services/go
                 LoginMainComponent = __decorate([
                     core_1.Component({
                         selector: 'login',
-                        templateUrl: './source/templates/login.html'
+                        templateUrl: '/source/templates/login.html'
                     }), 
                     __metadata('design:paramtypes', [office365_service_1.Office365Service, google_service_1.GoogleService])
                 ], LoginMainComponent);

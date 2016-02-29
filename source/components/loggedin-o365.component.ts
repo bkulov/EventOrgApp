@@ -1,7 +1,7 @@
 ﻿import {Component, OnInit} from 'angular2/core';
 import {RouteParams, Router} from 'angular2/router';
 
-import {Office365Service} from './services/office365.service';
+import {Office365Service} from '../services/office365.service';
 
 @Component({
 	selector: 'logedin-o365',

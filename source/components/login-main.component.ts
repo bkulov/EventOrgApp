@@ -1,11 +1,11 @@
 ﻿import {Component} from 'angular2/core';
 
-import {Office365Service} from './services/office365.service';
-import {GoogleService} from './services/google.service';
+import {Office365Service} from '../services/office365.service';
+import {GoogleService} from '../services/google.service';
 
 @Component({
 	selector: 'login',
-	templateUrl: './source/templates/login.html'
+	templateUrl: '/source/templates/login.html'
 })
 export class LoginMainComponent {
 

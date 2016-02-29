@@ -1,13 +1,13 @@
 import {Component, OnInit} from 'angular2/core';
 import {Router} from 'angular2/router';
 
-import {SpeakersService} from './services/speakers.service';
-import {Speaker} from './services/speaker';
+import {SpeakersService} from '../services/speakers.service';
+import {Speaker} from '../services/speaker';
 
 @Component({
 	selector: 'speakers',
-	templateUrl: './source/templates/speakers.html',
-	styleUrls: ['./source/css/speakers.css']
+	templateUrl: '/source/templates/speakers.html',
+	styleUrls: ['source/css/speakers.css']
 })
 export class SpeakersComponent implements OnInit {
 	speakers: Speaker[] = [];

@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/router', './services/lectures.service'], function(exports_1) {
+System.register(['angular2/core', 'angular2/router', '../services/lectures.service'], function(exports_1) {
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -66,7 +66,7 @@ System.register(['angular2/core', 'angular2/router', './services/lectures.servic
                 LecturesListComponent = __decorate([
                     core_1.Component({
                         selector: 'lectures-list',
-                        templateUrl: './source/templates/lectures.html',
+                        templateUrl: '/source/templates/lectures.html',
                         styleUrls: ['source/css/lectures.component.css']
                     }), 
                     __metadata('design:paramtypes', [lectures_service_1.LecturesService, router_1.Router])

@@ -1,13 +1,13 @@
 ﻿import {Component, OnInit} from 'angular2/core';
 import {RouteParams, Router} from 'angular2/router';
 
-import {Lecture} from './services/lecture';
-import {LecturesService} from './services/lectures.service';
+import {Lecture} from '../services/lecture';
+import {LecturesService} from '../services/lectures.service';
 
 @Component({
 	selector: 'lecture-detail',
-	templateUrl: './source/templates/lecture-detail.html',
-	styleUrls: ['./source/css/lectures.component.css']
+	templateUrl: '/source/templates/lecture-detail.html',
+	styleUrls: ['source/css/lectures.component.css']
 })
 export class LectureDetailComponent implements OnInit {
 	lecture: Lecture;
