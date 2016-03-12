@@ -12,5 +12,7 @@ export class UtilsService {
 			}
 		}
 		xobj.send(null);
+
+		// TODO: try to use System.import('some/data.json')
 	}
 }

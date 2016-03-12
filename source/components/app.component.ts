@@ -15,6 +15,7 @@ import {UtilsService} from '../services/utils.service';
 import {GoogleService} from '../services/google.service';
 import {LoginFacebookComponent} from './login-facebook.component';
 import {FacebookService} from '../services/facebook.service';
+import {TwitterService} from '../services/twitter.service';
 
 @RouteConfig([
 	{
@@ -64,7 +65,8 @@ import {FacebookService} from '../services/facebook.service';
 		</nav>
 		<router-outlet></router-outlet>
 	`,
-	providers: [SpeakersService, LecturesService, ROUTER_PROVIDERS, Office365Service, UtilsService, GoogleService, FacebookService],
+	providers: [SpeakersService, LecturesService, ROUTER_PROVIDERS, Office365Service, UtilsService, GoogleService, FacebookService,
+		TwitterService],
 	directives: [ROUTER_DIRECTIVES]
 
 })
