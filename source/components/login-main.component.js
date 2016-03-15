@@ -1,4 +1,6 @@
-System.register(['angular2/core', 'angular2/router', '../services/office365.service', '../services/google.service'], function(exports_1) {
+System.register(['../../jspm_packages/npm/angular2@2.0.0-beta.9/core', '../../jspm_packages/npm/angular2@2.0.0-beta.9/router', '../services/office365.service', '../services/google.service', '../services/twitter.service'], function(exports_1, context_1) {
+    "use strict";
+    var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -8,7 +10,7 @@ System.register(['angular2/core', 'angular2/router', '../services/office365.serv
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, router_1, office365_service_1, google_service_1;
+    var core_1, router_1, office365_service_1, google_service_1, twitter_service_1;
     var LoginMainComponent;
     return {
         setters:[
@@ -23,32 +25,41 @@ System.register(['angular2/core', 'angular2/router', '../services/office365.serv
             },
             function (google_service_1_1) {
                 google_service_1 = google_service_1_1;
+            },
+            function (twitter_service_1_1) {
+                twitter_service_1 = twitter_service_1_1;
             }],
         execute: function() {
-            LoginMainComponent = (function () {
-                function LoginMainComponent(_router, _office365Service, _googleService) {
+            let LoginMainComponent = class LoginMainComponent {
+                constructor(_router, _office365Service, _googleService, _twitterService) {
                     this._router = _router;
                     this._office365Service = _office365Service;
                     this._googleService = _googleService;
+                    this._twitterService = _twitterService;
                 }
-                LoginMainComponent.prototype.loginOffice365 = function () {
+                ngOnInit() {
+                    var aa = 0;
+                }
+                loginOffice365() {
                     this._office365Service.login();
-                };
-                LoginMainComponent.prototype.loginGoogle = function () {
+                }
+                loginGoogle() {
                     this._googleService.login();
-                };
-                LoginMainComponent.prototype.loginFacebook = function () {
+                }
+                loginFacebook() {
                     this._router.navigate(['LoginFB']);
-                };
-                LoginMainComponent = __decorate([
-                    core_1.Component({
-                        selector: 'login',
-                        templateUrl: '/source/templates/login.html'
-                    }), 
-                    __metadata('design:paramtypes', [router_1.Router, office365_service_1.Office365Service, google_service_1.GoogleService])
-                ], LoginMainComponent);
-                return LoginMainComponent;
-            })();
+                }
+                loginTwitter() {
+                    this._twitterService.login();
+                }
+            };
+            LoginMainComponent = __decorate([
+                core_1.Component({
+                    selector: 'login',
+                    templateUrl: '/source/templates/login.html'
+                }), 
+                __metadata('design:paramtypes', [router_1.Router, office365_service_1.Office365Service, google_service_1.GoogleService, twitter_service_1.TwitterService])
+            ], LoginMainComponent);
             exports_1("LoginMainComponent", LoginMainComponent);
         }
     }

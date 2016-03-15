@@ -1,4 +1,6 @@
-System.register(['angular2/core', './lectures-list.component'], function(exports_1) {
+System.register(['../../jspm_packages/npm/angular2@2.0.0-beta.9/core', './lectures-list.component'], function(exports_1, context_1) {
+    "use strict";
+    var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -19,19 +21,20 @@ System.register(['angular2/core', './lectures-list.component'], function(exports
                 lectures_list_component_1 = lectures_list_component_1_1;
             }],
         execute: function() {
-            LecturesComponent = (function () {
-                function LecturesComponent() {
-                }
-                LecturesComponent = __decorate([
-                    core_1.Component({
-                        selector: 'lectures',
-                        template: "\n\t<div class=\"padding\">\n\t\t<lectures-list [title]=\"'Lectures'\" [showOnlyScheduled]=\"false\" [title1]=\"2322\"></lectures-list>\n\t</div>\n\t",
-                        directives: [lectures_list_component_1.LecturesListComponent]
-                    }), 
-                    __metadata('design:paramtypes', [])
-                ], LecturesComponent);
-                return LecturesComponent;
-            })();
+            let LecturesComponent = class LecturesComponent {
+            };
+            LecturesComponent = __decorate([
+                core_1.Component({
+                    selector: 'lectures',
+                    template: `
+	<div class="padding">
+		<lectures-list [title]="'Lectures'" [showOnlyScheduled]="false" [title1]="2322"></lectures-list>
+	</div>
+	`,
+                    directives: [lectures_list_component_1.LecturesListComponent]
+                }), 
+                __metadata('design:paramtypes', [])
+            ], LecturesComponent);
             exports_1("LecturesComponent", LecturesComponent);
         }
     }

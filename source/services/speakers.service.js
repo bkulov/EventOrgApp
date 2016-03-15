@@ -1,4 +1,6 @@
-System.register(['angular2/core', './speakers-mock'], function(exports_1) {
+System.register(['../../jspm_packages/npm/angular2@2.0.0-beta.9/core', './speakers-mock'], function(exports_1, context_1) {
+    "use strict";
+    var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -19,25 +21,23 @@ System.register(['angular2/core', './speakers-mock'], function(exports_1) {
                 speakers_mock_1 = speakers_mock_1_1;
             }],
         execute: function() {
-            SpeakersService = (function () {
-                function SpeakersService() {
-                    var _this = this;
+            let SpeakersService = class SpeakersService {
+                constructor() {
                     this.speakers = [];
-                    this.getSpeakers().then(function (speakers) { return _this.speakers = speakers; });
+                    this.getSpeakers().then(speakers => this.speakers = speakers);
                 }
-                SpeakersService.prototype.getSpeakers = function () {
+                getSpeakers() {
                     return Promise.resolve(speakers_mock_1.SPEAKERSMOCK);
-                };
-                SpeakersService.prototype.getSpeakerById = function (speakerId) {
-                    var speakersById = this.speakers.filter(function (s) { return s.id === speakerId; });
+                }
+                getSpeakerById(speakerId) {
+                    var speakersById = this.speakers.filter((s) => { return s.id === speakerId; });
                     return speakersById ? speakersById[0] : null;
-                };
-                SpeakersService = __decorate([
-                    core_1.Injectable(), 
-                    __metadata('design:paramtypes', [])
-                ], SpeakersService);
-                return SpeakersService;
-            })();
+                }
+            };
+            SpeakersService = __decorate([
+                core_1.Injectable(), 
+                __metadata('design:paramtypes', [])
+            ], SpeakersService);
             exports_1("SpeakersService", SpeakersService);
         }
     }

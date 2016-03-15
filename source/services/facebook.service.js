@@ -1,4 +1,6 @@
-System.register(['angular2/core'], function(exports_1) {
+System.register(['../../jspm_packages/npm/angular2@2.0.0-beta.9/core'], function(exports_1, context_1) {
+    "use strict";
+    var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -16,12 +18,10 @@ System.register(['angular2/core'], function(exports_1) {
                 core_1 = core_1_1;
             }],
         execute: function() {
-            FacebookService = (function () {
-                function FacebookService() {
-                }
+            let FacebookService = class FacebookService {
                 // https://developers.facebook.com/docs/facebook-login/web
                 // https://developers.facebook.com/docs/facebook-login/permissions
-                FacebookService.prototype._testAPI = function () {
+                _testAPI() {
                     console.log('Welcome!  Fetching your information.... ');
                     FB.api('/me', function (response) {
                         //console.log('Successful login for: ' + response.name);
@@ -32,9 +32,9 @@ System.register(['angular2/core'], function(exports_1) {
                         console.log('API feed:');
                         console.log(response);
                     });
-                };
+                }
                 // This is called with the results from from FB.getLoginStatus().
-                FacebookService.prototype._statusChangeCallback = function (response) {
+                _statusChangeCallback(response) {
                     console.log('statusChangeCallback');
                     console.log(response);
                     // The response object is returned with a status field that lets the
@@ -56,8 +56,8 @@ System.register(['angular2/core'], function(exports_1) {
                         console.log('Please log into Facebook.');
                     }
                     return false;
-                };
-                FacebookService.prototype.fbInit = function () {
+                }
+                fbInit() {
                     window.fbAsyncInit = function () {
                         FB.init({
                             appId: '236732133335142',
@@ -75,38 +75,36 @@ System.register(['angular2/core'], function(exports_1) {
                         js.src = "//connect.facebook.net/en_US/sdk.js";
                         fjs.parentNode.insertBefore(js, fjs);
                     }(document, 'script', 'facebook-jssdk'));
-                };
-                FacebookService.prototype.login = function (successCallback) {
-                    var _this = this;
+                }
+                login(successCallback) {
                     // check if the user is already logged-in
-                    FB.getLoginStatus(function (response) {
-                        var isLogged = _this._statusChangeCallback(response);
+                    FB.getLoginStatus((response) => {
+                        var isLogged = this._statusChangeCallback(response);
                         if (isLogged) {
                             // user logged-in
                             successCallback();
                         }
                         else {
                             // not logged-in. try to log in
-                            FB.login(function (responseLogin) {
-                                isLogged = _this._statusChangeCallback(responseLogin);
+                            FB.login((responseLogin) => {
+                                isLogged = this._statusChangeCallback(responseLogin);
                                 if (isLogged) {
                                     successCallback();
                                 }
                             }, { scope: 'user_posts' });
                         }
                     });
-                };
-                FacebookService.prototype.logout = function () {
-                    FB.logout(function (response) {
+                }
+                logout() {
+                    FB.logout((response) => {
                         console.log(response);
                     });
-                };
-                FacebookService = __decorate([
-                    core_1.Injectable(), 
-                    __metadata('design:paramtypes', [])
-                ], FacebookService);
-                return FacebookService;
-            })();
+                }
+            };
+            FacebookService = __decorate([
+                core_1.Injectable(), 
+                __metadata('design:paramtypes', [])
+            ], FacebookService);
             exports_1("FacebookService", FacebookService);
         }
     }

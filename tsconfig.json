@@ -1,6 +1,7 @@
 {
+  "compileOnSave": true,
   "compilerOptions": {
-    "target": "es5",
+    "target": "es6",
     "module": "system",
     "moduleResolution": "node",
     "sourceMap": true,
@@ -10,6 +11,7 @@
     "noImplicitAny": false
   },
   "exclude": [
-    "node_modules"
+    "node_modules",
+    "jspm_packages"
   ]
 }

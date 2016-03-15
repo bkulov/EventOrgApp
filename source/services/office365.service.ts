@@ -1,4 +1,4 @@
-﻿import {Injectable} from 'angular2/core';
+﻿import {Injectable} from '../../jspm_packages/npm/angular2@2.0.0-beta.9/core';
 import {UtilsService} from './utils.service';
 
 @Injectable()

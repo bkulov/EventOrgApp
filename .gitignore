@@ -2,5 +2,7 @@
 # http://git-scm.com/docs/gitignore
 
 node_modules/
+jspm_packages/
 google_client_id.json
 O365_id.json
+*.sln

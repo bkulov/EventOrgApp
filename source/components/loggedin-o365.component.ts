@@ -1,5 +1,5 @@
-﻿import {Component, OnInit} from 'angular2/core';
-import {RouteParams, Router} from 'angular2/router';
+﻿import {Component, OnInit} from '../../jspm_packages/npm/angular2@2.0.0-beta.9/core';
+import {RouteParams, Router} from '../../jspm_packages/npm/angular2@2.0.0-beta.9/router';
 
 import {Office365Service} from '../services/office365.service';
 

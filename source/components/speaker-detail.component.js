@@ -1,4 +1,6 @@
-System.register(['angular2/core', 'angular2/router', '../services/lectures.service', '../services/speakers.service'], function(exports_1) {
+System.register(['../../jspm_packages/npm/angular2@2.0.0-beta.9/core', '../../jspm_packages/npm/angular2@2.0.0-beta.9/router', '../services/lectures.service', '../services/speakers.service'], function(exports_1, context_1) {
+    "use strict";
+    var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -25,28 +27,27 @@ System.register(['angular2/core', 'angular2/router', '../services/lectures.servi
                 speakers_service_1 = speakers_service_1_1;
             }],
         execute: function() {
-            SpeakerDetailComponent = (function () {
-                function SpeakerDetailComponent(_lecturesService, _speakersService, _routeParams) {
+            let SpeakerDetailComponent = class SpeakerDetailComponent {
+                constructor(_lecturesService, _speakersService, _routeParams) {
                     this._lecturesService = _lecturesService;
                     this._speakersService = _speakersService;
                     this._routeParams = _routeParams;
                 }
-                SpeakerDetailComponent.prototype.ngOnInit = function () {
-                    var id = +this._routeParams.get('id');
+                ngOnInit() {
+                    let id = +this._routeParams.get('id');
                     this.speaker = this._speakersService.getSpeakerById(id);
                     this.lectures = this._lecturesService.allBySpeaker(id);
-                };
-                SpeakerDetailComponent = __decorate([
-                    core_1.Component({
-                        selector: 'speaker-detail',
-                        templateUrl: '/source/templates/speaker-detail.html',
-                        styleUrls: ['source/css/speakers.css'],
-                        directives: [router_1.ROUTER_DIRECTIVES]
-                    }), 
-                    __metadata('design:paramtypes', [lectures_service_1.LecturesService, speakers_service_1.SpeakersService, router_1.RouteParams])
-                ], SpeakerDetailComponent);
-                return SpeakerDetailComponent;
-            })();
+                }
+            };
+            SpeakerDetailComponent = __decorate([
+                core_1.Component({
+                    selector: 'speaker-detail',
+                    templateUrl: '/source/templates/speaker-detail.html',
+                    styleUrls: ['source/css/speakers.css'],
+                    directives: [router_1.ROUTER_DIRECTIVES]
+                }), 
+                __metadata('design:paramtypes', [lectures_service_1.LecturesService, speakers_service_1.SpeakersService, router_1.RouteParams])
+            ], SpeakerDetailComponent);
             exports_1("SpeakerDetailComponent", SpeakerDetailComponent);
         }
     }

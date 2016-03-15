@@ -1,4 +1,6 @@
-System.register(['angular2/core', 'angular2/router', '../services/lectures.service'], function(exports_1) {
+System.register(['../../jspm_packages/npm/angular2@2.0.0-beta.9/core', '../../jspm_packages/npm/angular2@2.0.0-beta.9/router', '../services/lectures.service'], function(exports_1, context_1) {
+    "use strict";
+    var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -22,45 +24,44 @@ System.register(['angular2/core', 'angular2/router', '../services/lectures.servi
                 lectures_service_1 = lectures_service_1_1;
             }],
         execute: function() {
-            LectureDetailComponent = (function () {
-                function LectureDetailComponent(_lecturesService, _routeParams, _router) {
+            let LectureDetailComponent = class LectureDetailComponent {
+                constructor(_lecturesService, _routeParams, _router) {
                     this._lecturesService = _lecturesService;
                     this._routeParams = _routeParams;
                     this._router = _router;
                 }
-                LectureDetailComponent.prototype.ngOnInit = function () {
-                    var id = +this._routeParams.get('id');
+                ngOnInit() {
+                    let id = +this._routeParams.get('id');
                     this.lecture = this._lecturesService.get(id);
-                };
-                LectureDetailComponent.prototype.getDifficulty = function () {
+                }
+                getDifficulty() {
                     return this._lecturesService.getLectureDifficultyAsText(this.lecture.difficulty);
-                };
-                LectureDetailComponent.prototype.getLectorName = function () {
+                }
+                getLectorName() {
                     return this._lecturesService.getLectorName(this.lecture.lectorId);
-                };
-                LectureDetailComponent.prototype.toLocaleDateString = function (date) {
+                }
+                toLocaleDateString(date) {
                     return this._lecturesService.toLocaleDateString(date);
-                };
-                LectureDetailComponent.prototype.setSchedule = function (scheduled) {
+                }
+                setSchedule(scheduled) {
                     this._lecturesService.setScheduled(this.lecture, scheduled);
-                };
-                LectureDetailComponent.prototype.setRating = function (rating) {
+                }
+                setRating(rating) {
                     this.lecture.rating = rating;
-                };
-                LectureDetailComponent.prototype.gotoSpeaker = function () {
+                }
+                gotoSpeaker() {
                     var link = ['SpeakerDetail', { id: this.lecture.lectorId }];
                     this._router.navigate(link);
-                };
-                LectureDetailComponent = __decorate([
-                    core_1.Component({
-                        selector: 'lecture-detail',
-                        templateUrl: '/source/templates/lecture-detail.html',
-                        styleUrls: ['source/css/lectures.component.css']
-                    }), 
-                    __metadata('design:paramtypes', [lectures_service_1.LecturesService, router_1.RouteParams, router_1.Router])
-                ], LectureDetailComponent);
-                return LectureDetailComponent;
-            })();
+                }
+            };
+            LectureDetailComponent = __decorate([
+                core_1.Component({
+                    selector: 'lecture-detail',
+                    templateUrl: '/source/templates/lecture-detail.html',
+                    styleUrls: ['source/css/lectures.component.css']
+                }), 
+                __metadata('design:paramtypes', [lectures_service_1.LecturesService, router_1.RouteParams, router_1.Router])
+            ], LectureDetailComponent);
             exports_1("LectureDetailComponent", LectureDetailComponent);
         }
     }

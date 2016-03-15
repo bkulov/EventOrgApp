@@ -1,3 +1,8 @@
+// problems with typescript compiler, angular2 and jspm
+// https://github.com/angular/angular/issues/7052
+// http://stackoverflow.com/questions/33332394/angular-2-typescript-cant-find-names
+// https://github.com/angular/angular/issues/4902
+
 import {Injectable} from 'angular2/core';
 
 import {Lecture} from './lecture';

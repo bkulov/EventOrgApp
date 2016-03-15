@@ -1,4 +1,6 @@
-System.register(['angular2/core', 'angular2/router', './utils.service'], function(exports_1) {
+System.register(['../../jspm_packages/npm/angular2@2.0.0-beta.9/core', '../../jspm_packages/npm/angular2@2.0.0-beta.9/router', './utils.service'], function(exports_1, context_1) {
+    "use strict";
+    var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -22,8 +24,8 @@ System.register(['angular2/core', 'angular2/router', './utils.service'], functio
                 utils_service_1 = utils_service_1_1;
             }],
         execute: function() {
-            GoogleService = (function () {
-                function GoogleService(_utilsService, _router) {
+            let GoogleService = class GoogleService {
+                constructor(_utilsService, _router) {
                     this._utilsService = _utilsService;
                     this._router = _router;
                     // TODO: check if this is needed
@@ -34,8 +36,7 @@ System.register(['angular2/core', 'angular2/router', './utils.service'], functio
                 // 1 - select and authorize APIs
                 // 2 - get authorization token
                 // 3 - GET request for a given resource. Authorization token from step 2 will be added to Authorization header
-                GoogleService.prototype._authenticate = function () {
-                    var _this = this;
+                _authenticate() {
                     var scopes = [
                         'https://www.googleapis.com/auth/plus.me',
                         'https://www.googleapis.com/auth/calendar',
@@ -46,18 +47,18 @@ System.register(['angular2/core', 'angular2/router', './utils.service'], functio
                         'scope': scopes,
                         immediate: false // use true to refresh to token without showing UI
                     };
-                    gapi.auth.authorize(config, function (token) {
+                    gapi.auth.authorize(config, (token) => {
                         console.log('login complete');
                         console.log(token);
-                        _this._token = token;
+                        this._token = token;
                         // TODO: redirect to another page
                         //this._router.navigate(['Agenda']);
                     });
-                };
-                GoogleService.prototype._getContacts = function () {
+                }
+                _getContacts() {
                     // google plus using load
                     gapi.client.load('plus', 'v1')
-                        .then(function (context) {
+                        .then((context) => {
                         gapi.client.plus.activities.search({ 'query': 'Google+', 'orderBy': 'best' }).then(function (response) {
                             console.log('loading Google+ feed:');
                             console.log(response.result);
@@ -69,20 +70,19 @@ System.register(['angular2/core', 'angular2/router', './utils.service'], functio
                     gapi.client.request({
                         'path': 'm8/feeds/contacts/default/full'
                     })
-                        .then(function (response) {
+                        .then((response) => {
                         console.log('loading Contacts:');
                         console.log(response);
                         window.open("data:text/xml;charset=utf-8," + response.body);
-                    }, function (error) {
+                    }, (error) => {
                         console.log(error);
                     });
-                };
-                GoogleService.prototype.login = function () {
-                    var _this = this;
+                }
+                login() {
                     if (!this._clientConfig) {
-                        this._utilsService.loadJSON('/google_client_id.json', (function (content) {
-                            _this._clientConfig = JSON.parse(content);
-                            _this._authenticate();
+                        this._utilsService.loadJSON('/google_client_id.json', ((content) => {
+                            this._clientConfig = JSON.parse(content);
+                            this._authenticate();
                         }));
                     }
                     else {
@@ -93,13 +93,12 @@ System.register(['angular2/core', 'angular2/router', './utils.service'], functio
                             this._getContacts();
                         }
                     }
-                };
-                GoogleService = __decorate([
-                    core_1.Injectable(), 
-                    __metadata('design:paramtypes', [utils_service_1.UtilsService, router_1.Router])
-                ], GoogleService);
-                return GoogleService;
-            })();
+                }
+            };
+            GoogleService = __decorate([
+                core_1.Injectable(), 
+                __metadata('design:paramtypes', [utils_service_1.UtilsService, router_1.Router])
+            ], GoogleService);
             exports_1("GoogleService", GoogleService);
         }
     }

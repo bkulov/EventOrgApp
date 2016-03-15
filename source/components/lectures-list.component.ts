@@ -1,5 +1,8 @@
-import {Component, OnInit, Input} from 'angular2/core';
-import {Router} from 'angular2/router';
+///<reference path="../../jspm_packages/npm/angular2@2.0.0-beta.9/core.d.ts"/>
+///<reference path="../../jspm_packages/npm/angular2@2.0.0-beta.9/router.d.ts"/>
+
+import {Component, OnInit, Input} from '../../jspm_packages/npm/angular2@2.0.0-beta.9/core';
+import {Router} from '../../jspm_packages/npm/angular2@2.0.0-beta.9/router';
 
 import {Lecture} from '../services/lecture';
 import {LecturesService} from '../services/lectures.service';
@@ -15,7 +18,9 @@ export class LecturesListComponent implements OnInit {
 	@Input() title: string;
 	@Input() showOnlyScheduled: boolean = false;
 
-	constructor(private _lecturesService: LecturesService, private _router: Router) { }
+	constructor(private _lecturesService: LecturesService, private _router: Router) {
+		var aa = 0;
+	}
 
 	ngOnInit() {
 		this.dates = this._lecturesService.getDates();

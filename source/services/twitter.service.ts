@@ -1,4 +1,7 @@
-import {Injectable} from 'angular2/core';
+import {Injectable} from '../../jspm_packages/npm/angular2@2.0.0-beta.9/core';
+
+//import {Twitter} from 'twitter-node-client/index';
+
 //import {Twitter} from 'twitter-node-client/index.js';
 
 //import * as lib from 'twitter-node-client/index.js';
@@ -26,17 +29,8 @@ export class TwitterService {
 			"callBackUrl": "XXX"
 		}
 
-		System.import('twitter-node-client/index.js')
-			.then(module => {
-				console.log(module);
-			})
-			.catch(error => {
-				console.log(error);
-			});
-
-		//var aa = lib;
-
 		//var twitter = new Twitter(config);
+		//console.log(twitter);
 
 		//System.import('/node_modules/twitter-node-client/index.js').then(function (m) {
 		//	console.log(m);

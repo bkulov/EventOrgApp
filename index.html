@@ -6,7 +6,7 @@
 
     <!-- 1. Load libraries -->
     <!-- IE required polyfills, in this exact order -->
-    <script src="node_modules/es6-shim/es6-shim.min.js"></script>
+    <!--<script src="node_modules/es6-shim/es6-shim.min.js"></script>
     <script src="node_modules/systemjs/dist/system-polyfills.js"></script>
 
     <script src="node_modules/angular2/bundles/angular2-polyfills.js"></script>
@@ -15,20 +15,26 @@
     <script src="node_modules/angular2/bundles/angular2.dev.js"></script>
 	<script src="node_modules/angular2/bundles/router.dev.js"></script>
 
-    <script src="https://apis.google.com/js/client.js"></script>
+    <script src="https://apis.google.com/js/client.js"></script>-->
+
+	<script src="jspm_packages/system.js"></script>
+
+	<script src="./config.js"></script>
 
     <!-- 2. Configure SystemJS -->
     <script>
-        System.config({
-            packages: {
-                source: {
-                    format: 'register',
-                    defaultExtension: 'js'
-                }
-            }
-        });
-        System.import('source/main')
-            .then(null, console.error.bind(console));
+        //System.config({
+        //    packages: {
+        //        source: {
+        //            format: 'register',
+        //            defaultExtension: 'js'
+        //        }
+        //    }
+		//});
+		System.import('reflect-metadata')
+			  .then(function () { System.import('zone.js') })
+			  .then(function () { System.import('source/main') })
+			  .then(null, console.error.bind(console));
     </script>
 </head>
 

@@ -1,4 +1,6 @@
-System.register(['angular2/core', 'angular2/router', '../services/facebook.service'], function(exports_1) {
+System.register(['../../jspm_packages/npm/angular2@2.0.0-beta.9/core', '../../jspm_packages/npm/angular2@2.0.0-beta.9/router', '../services/facebook.service'], function(exports_1, context_1) {
+    "use strict";
+    var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -22,32 +24,31 @@ System.register(['angular2/core', 'angular2/router', '../services/facebook.servi
                 facebook_service_1 = facebook_service_1_1;
             }],
         execute: function() {
-            LoginFacebookComponent = (function () {
-                function LoginFacebookComponent(_router, _facebookService) {
+            let LoginFacebookComponent = class LoginFacebookComponent {
+                constructor(_router, _facebookService) {
                     this._router = _router;
                     this._facebookService = _facebookService;
                 }
-                LoginFacebookComponent.prototype.ngOnInit = function () {
+                ngOnInit() {
                     this._facebookService.fbInit();
-                };
-                LoginFacebookComponent.prototype.login = function () {
-                    this._facebookService.login(function () {
+                }
+                login() {
+                    this._facebookService.login(() => {
                         console.log('Callback executed');
                         //this._router.navigate(['Agenda']);
                     });
-                };
-                LoginFacebookComponent.prototype.logout = function () {
+                }
+                logout() {
                     this._facebookService.logout();
-                };
-                LoginFacebookComponent = __decorate([
-                    core_1.Component({
-                        selector: 'login-facebook',
-                        templateUrl: '/source/templates/login-facebook.html'
-                    }), 
-                    __metadata('design:paramtypes', [router_1.Router, facebook_service_1.FacebookService])
-                ], LoginFacebookComponent);
-                return LoginFacebookComponent;
-            })();
+                }
+            };
+            LoginFacebookComponent = __decorate([
+                core_1.Component({
+                    selector: 'login-facebook',
+                    templateUrl: '/source/templates/login-facebook.html'
+                }), 
+                __metadata('design:paramtypes', [router_1.Router, facebook_service_1.FacebookService])
+            ], LoginFacebookComponent);
             exports_1("LoginFacebookComponent", LoginFacebookComponent);
         }
     }

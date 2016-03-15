@@ -1,4 +1,4 @@
-import {Component} from 'angular2/core';
+import {Component} from '../../jspm_packages/npm/angular2@2.0.0-beta.9/core';
 
 import {LecturesListComponent} from './lectures-list.component';
 

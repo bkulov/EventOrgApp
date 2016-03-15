@@ -1,4 +1,10 @@
-System.register(['angular2/core', './lectures-mock', './speakers.service', './difficulty'], function(exports_1) {
+// problems with typescript compiler, angular2 and jspm
+// https://github.com/angular/angular/issues/7052
+// http://stackoverflow.com/questions/33332394/angular-2-typescript-cant-find-names
+// https://github.com/angular/angular/issues/4902
+System.register(['angular2/core', './lectures-mock', './speakers.service', './difficulty'], function(exports_1, context_1) {
+    "use strict";
+    var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -25,48 +31,46 @@ System.register(['angular2/core', './lectures-mock', './speakers.service', './di
                 difficulty_1 = difficulty_1_1;
             }],
         execute: function() {
-            LecturesService = (function () {
-                function LecturesService(_speakersService) {
-                    var _this = this;
+            let LecturesService = class LecturesService {
+                constructor(_speakersService) {
                     this._speakersService = _speakersService;
                     // cache
                     this._lectures = [];
                     this._lecturesByDate = new Map();
                     this._scheduledLecturesByDate = new Map();
                     this._lecturesBySpeaker = new Map();
-                    this._getLectures().then(function (lectures) { return _this._lectures = lectures; });
+                    this._getLectures().then(lectures => this._lectures = lectures);
                 }
-                LecturesService.prototype._getLectures = function () {
+                _getLectures() {
                     return Promise.resolve(lectures_mock_1.LECTURESMOCK);
-                };
-                LecturesService.prototype._isDatePresentInArray = function (date) {
-                    var _self = this;
+                }
+                _isDatePresentInArray(date) {
+                    let _self = this;
                     return this._dates.filter(function (d) {
                         return _self._dateEquals(d, date);
                     }).length > 0;
-                };
-                LecturesService.prototype._dateEquals = function (date1, date2) {
+                }
+                _dateEquals(date1, date2) {
                     return date1.getDate() === date2.getDate() &&
                         date1.getMonth() === date2.getMonth() &&
                         date1.getFullYear() === date2.getFullYear();
-                };
-                LecturesService.prototype.toLocaleDateString = function (date) {
+                }
+                toLocaleDateString(date) {
                     var options = { day: 'numeric', month: 'short' };
                     return date.toLocaleDateString("en-US", options);
-                };
-                LecturesService.prototype.getDates = function () {
+                }
+                getDates() {
                     if (this._dates === undefined) {
                         this._dates = [];
-                        for (var _i = 0, _a = this._lectures; _i < _a.length; _i++) {
-                            var lecture = _a[_i];
+                        for (let lecture of this._lectures) {
                             if (!this._isDatePresentInArray(lecture.startTime)) {
                                 this._dates.push(lecture.startTime);
                             }
                         }
                     }
                     return this._dates;
-                };
-                LecturesService.prototype.getAllByDate = function (date) {
+                }
+                getAllByDate(date) {
                     var dateAsString = date.toLocaleDateString();
                     var lecturesForDate = this._lecturesByDate.get(dateAsString);
                     if (lecturesForDate === undefined) {
@@ -79,8 +83,8 @@ System.register(['angular2/core', './lectures-mock', './speakers.service', './di
                         this._lecturesByDate.set(dateAsString, lecturesForDate);
                     }
                     return lecturesForDate;
-                };
-                LecturesService.prototype.getScheduledByDate = function (date) {
+                }
+                getScheduledByDate(date) {
                     var dateAsString = date.toLocaleDateString();
                     var lecturesForDate = this._scheduledLecturesByDate.get(dateAsString);
                     if (lecturesForDate === undefined) {
@@ -88,16 +92,16 @@ System.register(['angular2/core', './lectures-mock', './speakers.service', './di
                         this._scheduledLecturesByDate.set(dateAsString, lecturesForDate);
                     }
                     return lecturesForDate;
-                };
-                LecturesService.prototype.get = function (lectureId) {
+                }
+                get(lectureId) {
                     for (var i = 0; i < this._lectures.length; i++) {
                         if (this._lectures[i].id === lectureId) {
                             return this._lectures[i];
                         }
                     }
                     return null;
-                };
-                LecturesService.prototype.allBySpeaker = function (speakerId) {
+                }
+                allBySpeaker(speakerId) {
                     var lecturesBySpeaker = this._lecturesBySpeaker.get(speakerId);
                     if (lecturesBySpeaker === undefined) {
                         lecturesBySpeaker = [];
@@ -109,12 +113,12 @@ System.register(['angular2/core', './lectures-mock', './speakers.service', './di
                         this._lecturesBySpeaker.set(speakerId, lecturesBySpeaker);
                     }
                     return lecturesBySpeaker;
-                };
-                LecturesService.prototype.getLectorName = function (lectorId) {
+                }
+                getLectorName(lectorId) {
                     var lector = this._speakersService.getSpeakerById(lectorId);
                     return lector ? lector.name : '';
-                };
-                LecturesService.prototype.getLectureDifficultyAsText = function (difficulty) {
+                }
+                getLectureDifficultyAsText(difficulty) {
                     switch (difficulty) {
                         case difficulty_1.Difficulty.SoftSkills:
                             return 'SOFT SKILLS';
@@ -124,8 +128,8 @@ System.register(['angular2/core', './lectures-mock', './speakers.service', './di
                             return 'DEVOPS';
                     }
                     return '';
-                };
-                LecturesService.prototype.getLectureDifficultyColor = function (difficulty) {
+                }
+                getLectureDifficultyColor(difficulty) {
                     switch (difficulty) {
                         case difficulty_1.Difficulty.SoftSkills:
                             return '#ffe4c4';
@@ -135,8 +139,8 @@ System.register(['angular2/core', './lectures-mock', './speakers.service', './di
                             return '#1e90ff';
                     }
                     return '#000';
-                };
-                LecturesService.prototype.setScheduled = function (lecture, scheduled) {
+                }
+                setScheduled(lecture, scheduled) {
                     if (lecture) {
                         lecture.scheduled = scheduled;
                         // update cache
@@ -154,13 +158,12 @@ System.register(['angular2/core', './lectures-mock', './speakers.service', './di
                             lecturesForDate.splice(index, 1);
                         }
                     }
-                };
-                LecturesService = __decorate([
-                    core_1.Injectable(), 
-                    __metadata('design:paramtypes', [speakers_service_1.SpeakersService])
-                ], LecturesService);
-                return LecturesService;
-            })();
+                }
+            };
+            LecturesService = __decorate([
+                core_1.Injectable(), 
+                __metadata('design:paramtypes', [speakers_service_1.SpeakersService])
+            ], LecturesService);
             exports_1("LecturesService", LecturesService);
         }
     }

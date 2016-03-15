@@ -1,4 +1,8 @@
-System.register(['angular2/core', 'angular2/router', './lectures-list.component'], function(exports_1) {
+///<reference path="../../jspm_packages/npm/angular2@2.0.0-beta.9/core.d.ts"/>
+///<reference path="../../jspm_packages/npm/angular2@2.0.0-beta.9/router.d.ts"/>
+System.register(['../../jspm_packages/npm/angular2@2.0.0-beta.9/core', '../../jspm_packages/npm/angular2@2.0.0-beta.9/router', './lectures-list.component'], function(exports_1, context_1) {
+    "use strict";
+    var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -22,23 +26,25 @@ System.register(['angular2/core', 'angular2/router', './lectures-list.component'
                 lectures_list_component_1 = lectures_list_component_1_1;
             }],
         execute: function() {
-            AgendaComponent = (function () {
-                function AgendaComponent(_router) {
+            let AgendaComponent = class AgendaComponent {
+                constructor(_router) {
                     this._router = _router;
                 }
-                AgendaComponent.prototype.onAddLectures = function () {
+                onAddLectures() {
                     this._router.navigate(['Lectures']);
-                };
-                AgendaComponent = __decorate([
-                    core_1.Component({
-                        selector: 'agenda',
-                        templateUrl: '/source/templates/agenda.html',
-                        directives: [lectures_list_component_1.LecturesListComponent]
-                    }), 
-                    __metadata('design:paramtypes', [router_1.Router])
-                ], AgendaComponent);
-                return AgendaComponent;
-            })();
+                }
+                ngOnInit() {
+                    var aa = 0;
+                }
+            };
+            AgendaComponent = __decorate([
+                core_1.Component({
+                    selector: 'agenda',
+                    templateUrl: '/source/templates/agenda.html',
+                    directives: [lectures_list_component_1.LecturesListComponent]
+                }), 
+                __metadata('design:paramtypes', [router_1.Router])
+            ], AgendaComponent);
             exports_1("AgendaComponent", AgendaComponent);
         }
     }

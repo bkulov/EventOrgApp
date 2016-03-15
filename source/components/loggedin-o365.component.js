@@ -1,4 +1,6 @@
-System.register(['angular2/core', 'angular2/router', '../services/office365.service'], function(exports_1) {
+System.register(['../../jspm_packages/npm/angular2@2.0.0-beta.9/core', '../../jspm_packages/npm/angular2@2.0.0-beta.9/router', '../services/office365.service'], function(exports_1, context_1) {
+    "use strict";
+    var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -22,27 +24,30 @@ System.register(['angular2/core', 'angular2/router', '../services/office365.serv
                 office365_service_1 = office365_service_1_1;
             }],
         execute: function() {
-            LoggedInO365Component = (function () {
-                function LoggedInO365Component(_office365Service, _routeParams, _router) {
+            let LoggedInO365Component = class LoggedInO365Component {
+                constructor(_office365Service, _routeParams, _router) {
                     this._office365Service = _office365Service;
                     this._routeParams = _routeParams;
                     this._router = _router;
                 }
-                LoggedInO365Component.prototype.ngOnInit = function () {
-                    var code = this._routeParams.get('code');
-                    var sessionState = this._routeParams.get('session_state');
+                ngOnInit() {
+                    let code = this._routeParams.get('code');
+                    let sessionState = this._routeParams.get('session_state');
                     this._office365Service.setLoginData(code, sessionState);
                     this._router.navigate(['Agenda']);
-                };
-                LoggedInO365Component = __decorate([
-                    core_1.Component({
-                        selector: 'logedin-o365',
-                        template: "\n\t\t<div>\n\t\t\t<p>Redirecting...</p>\n\t\t</div>\n\t"
-                    }), 
-                    __metadata('design:paramtypes', [office365_service_1.Office365Service, router_1.RouteParams, router_1.Router])
-                ], LoggedInO365Component);
-                return LoggedInO365Component;
-            })();
+                }
+            };
+            LoggedInO365Component = __decorate([
+                core_1.Component({
+                    selector: 'logedin-o365',
+                    template: `
+		<div>
+			<p>Redirecting...</p>
+		</div>
+	`
+                }), 
+                __metadata('design:paramtypes', [office365_service_1.Office365Service, router_1.RouteParams, router_1.Router])
+            ], LoggedInO365Component);
             exports_1("LoggedInO365Component", LoggedInO365Component);
         }
     }

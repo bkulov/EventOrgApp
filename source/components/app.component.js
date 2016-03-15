@@ -1,4 +1,6 @@
-System.register(['angular2/core', 'angular2/router', '../services/speakers.service', './agenda.component', '../services/lectures.service', './lectures.component', './speakers.component', './lecture-detail.component', './speaker-detail.component', './login-main.component', './loggedin-o365.component', '../services/office365.service', '../services/utils.service', '../services/google.service', './login-facebook.component', '../services/facebook.service'], function(exports_1) {
+System.register(['angular2/core', '../../jspm_packages/npm/angular2@2.0.0-beta.9/router', '../services/speakers.service', './agenda.component', '../services/lectures.service', './lectures.component', './speakers.component', './lecture-detail.component', './speaker-detail.component', './login-main.component', './loggedin-o365.component', '../services/office365.service', '../services/utils.service', '../services/google.service', './login-facebook.component', '../services/facebook.service', '../services/twitter.service'], function(exports_1, context_1) {
+    "use strict";
+    var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -8,7 +10,7 @@ System.register(['angular2/core', 'angular2/router', '../services/speakers.servi
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, router_1, speakers_service_1, agenda_component_1, lectures_service_1, lectures_component_1, speakers_component_1, lecture_detail_component_1, speaker_detail_component_1, login_main_component_1, loggedin_o365_component_1, office365_service_1, utils_service_1, google_service_1, login_facebook_component_1, facebook_service_1;
+    var core_1, router_1, speakers_service_1, agenda_component_1, lectures_service_1, lectures_component_1, speakers_component_1, lecture_detail_component_1, speaker_detail_component_1, login_main_component_1, loggedin_o365_component_1, office365_service_1, utils_service_1, google_service_1, login_facebook_component_1, facebook_service_1, twitter_service_1;
     var EventApp;
     return {
         setters:[
@@ -59,61 +61,73 @@ System.register(['angular2/core', 'angular2/router', '../services/speakers.servi
             },
             function (facebook_service_1_1) {
                 facebook_service_1 = facebook_service_1_1;
+            },
+            function (twitter_service_1_1) {
+                twitter_service_1 = twitter_service_1_1;
             }],
         execute: function() {
-            EventApp = (function () {
-                function EventApp() {
-                }
-                EventApp.prototype.goBack = function () {
+            let EventApp = class EventApp {
+                goBack() {
                     window.history.back();
-                };
-                EventApp = __decorate([
-                    router_1.RouteConfig([
-                        {
-                            path: '/login',
-                            name: 'LoginMain',
-                            component: login_main_component_1.LoginMainComponent,
-                            useAsDefault: true
-                        }, {
-                            path: '/logedino365',
-                            name: 'LoggedInO365',
-                            component: loggedin_o365_component_1.LoggedInO365Component
-                        }, {
-                            path: '/agenda',
-                            name: 'Agenda',
-                            component: agenda_component_1.AgendaComponent
-                        }, {
-                            path: '/lectures',
-                            name: 'Lectures',
-                            component: lectures_component_1.LecturesComponent
-                        }, {
-                            path: '/lecture/:id',
-                            name: 'LectureDetail',
-                            component: lecture_detail_component_1.LectureDetailComponent
-                        }, {
-                            path: '/speakers',
-                            name: 'Speakers',
-                            component: speakers_component_1.SpeakersComponent
-                        }, {
-                            path: '/speaker/:id',
-                            name: 'SpeakerDetail',
-                            component: speaker_detail_component_1.SpeakerDetailComponent
-                        }, {
-                            path: '/loginfb',
-                            name: 'LoginFB',
-                            component: login_facebook_component_1.LoginFacebookComponent
-                        }
-                    ]),
-                    core_1.Component({
-                        selector: 'event-app',
-                        template: "\n\t\t<button (click)=\"goBack()\">back</button>\n\t\t<nav>\n\t\t\t<a [routerLink]=\"['Agenda']\">Agenda</a>\n\t\t\t<a [routerLink]=\"['Lectures']\">Lectures</a>\n\t\t\t<a [routerLink]=\"['Speakers']\">Speakers</a>\n\t\t</nav>\n\t\t<router-outlet></router-outlet>\n\t",
-                        providers: [speakers_service_1.SpeakersService, lectures_service_1.LecturesService, router_1.ROUTER_PROVIDERS, office365_service_1.Office365Service, utils_service_1.UtilsService, google_service_1.GoogleService, facebook_service_1.FacebookService],
-                        directives: [router_1.ROUTER_DIRECTIVES]
-                    }), 
-                    __metadata('design:paramtypes', [])
-                ], EventApp);
-                return EventApp;
-            })();
+                }
+                ngOnInit() {
+                    var aa = 0;
+                }
+            };
+            EventApp = __decorate([
+                router_1.RouteConfig([
+                    {
+                        path: '/login',
+                        name: 'LoginMain',
+                        component: login_main_component_1.LoginMainComponent,
+                        useAsDefault: true
+                    }, {
+                        path: '/logedino365',
+                        name: 'LoggedInO365',
+                        component: loggedin_o365_component_1.LoggedInO365Component
+                    }, {
+                        path: '/agenda',
+                        name: 'Agenda',
+                        component: agenda_component_1.AgendaComponent
+                    }, {
+                        path: '/lectures',
+                        name: 'Lectures',
+                        component: lectures_component_1.LecturesComponent
+                    }, {
+                        path: '/lecture/:id',
+                        name: 'LectureDetail',
+                        component: lecture_detail_component_1.LectureDetailComponent
+                    }, {
+                        path: '/speakers',
+                        name: 'Speakers',
+                        component: speakers_component_1.SpeakersComponent
+                    }, {
+                        path: '/speaker/:id',
+                        name: 'SpeakerDetail',
+                        component: speaker_detail_component_1.SpeakerDetailComponent
+                    }, {
+                        path: '/loginfb',
+                        name: 'LoginFB',
+                        component: login_facebook_component_1.LoginFacebookComponent
+                    }
+                ]),
+                core_1.Component({
+                    selector: 'event-app',
+                    template: `
+		<button (click)="goBack()">back</button>
+		<nav>
+			<a [routerLink]="['Agenda']">Agenda</a>
+			<a [routerLink]="['Lectures']">Lectures</a>
+			<a [routerLink]="['Speakers']">Speakers</a>
+		</nav>
+		<router-outlet></router-outlet>
+	`,
+                    providers: [speakers_service_1.SpeakersService, lectures_service_1.LecturesService, router_1.ROUTER_PROVIDERS, office365_service_1.Office365Service, utils_service_1.UtilsService, google_service_1.GoogleService, facebook_service_1.FacebookService,
+                        twitter_service_1.TwitterService],
+                    directives: [router_1.ROUTER_DIRECTIVES]
+                }), 
+                __metadata('design:paramtypes', [])
+            ], EventApp);
             exports_1("EventApp", EventApp);
         }
     }

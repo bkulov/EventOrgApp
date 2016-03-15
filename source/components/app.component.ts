@@ -1,5 +1,5 @@
-import {Component} from 'angular2/core';
-import {RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS} from 'angular2/router';
+import {Component, OnInit} from 'angular2/core';
+import {RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS} from '../../jspm_packages/npm/angular2@2.0.0-beta.9/router';
 
 import {SpeakersService} from '../services/speakers.service';
 import {AgendaComponent} from './agenda.component';
@@ -70,8 +70,13 @@ import {TwitterService} from '../services/twitter.service';
 	directives: [ROUTER_DIRECTIVES]
 
 })
-export class EventApp{
+export class EventApp implements OnInit {
 	goBack() {
 		window.history.back();
 	}
+
+	ngOnInit(): void {
+		var aa = 0;
+	}
+
 }

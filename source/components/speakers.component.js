@@ -1,4 +1,6 @@
-System.register(['angular2/core', 'angular2/router', '../services/speakers.service'], function(exports_1) {
+System.register(['../../jspm_packages/npm/angular2@2.0.0-beta.9/core', '../../jspm_packages/npm/angular2@2.0.0-beta.9/router', '../services/speakers.service'], function(exports_1, context_1) {
+    "use strict";
+    var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -22,30 +24,28 @@ System.register(['angular2/core', 'angular2/router', '../services/speakers.servi
                 speakers_service_1 = speakers_service_1_1;
             }],
         execute: function() {
-            SpeakersComponent = (function () {
-                function SpeakersComponent(_speakersService, _router) {
+            let SpeakersComponent = class SpeakersComponent {
+                constructor(_speakersService, _router) {
                     this._speakersService = _speakersService;
                     this._router = _router;
                     this.speakers = [];
                 }
-                SpeakersComponent.prototype.ngOnInit = function () {
-                    var _this = this;
-                    this._speakersService.getSpeakers().then(function (speakers) { return _this.speakers = speakers; });
-                };
-                SpeakersComponent.prototype.gotoDetails = function (speaker) {
+                ngOnInit() {
+                    this._speakersService.getSpeakers().then(speakers => this.speakers = speakers);
+                }
+                gotoDetails(speaker) {
                     var link = ['SpeakerDetail', { id: speaker.id }];
                     this._router.navigate(link);
-                };
-                SpeakersComponent = __decorate([
-                    core_1.Component({
-                        selector: 'speakers',
-                        templateUrl: '/source/templates/speakers.html',
-                        styleUrls: ['source/css/speakers.css']
-                    }), 
-                    __metadata('design:paramtypes', [speakers_service_1.SpeakersService, router_1.Router])
-                ], SpeakersComponent);
-                return SpeakersComponent;
-            })();
+                }
+            };
+            SpeakersComponent = __decorate([
+                core_1.Component({
+                    selector: 'speakers',
+                    templateUrl: '/source/templates/speakers.html',
+                    styleUrls: ['source/css/speakers.css']
+                }), 
+                __metadata('design:paramtypes', [speakers_service_1.SpeakersService, router_1.Router])
+            ], SpeakersComponent);
             exports_1("SpeakersComponent", SpeakersComponent);
         }
     }

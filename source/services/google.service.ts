@@ -1,5 +1,5 @@
-﻿import {Injectable} from 'angular2/core';
-import {Router} from 'angular2/router';
+﻿import {Injectable} from '../../jspm_packages/npm/angular2@2.0.0-beta.9/core';
+import {Router} from '../../jspm_packages/npm/angular2@2.0.0-beta.9/router';
 
 import {UtilsService} from './utils.service';
 

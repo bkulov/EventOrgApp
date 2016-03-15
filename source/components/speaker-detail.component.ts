@@ -1,5 +1,5 @@
-﻿import {Component, OnInit} from 'angular2/core';
-import {RouteParams, ROUTER_DIRECTIVES} from 'angular2/router';
+﻿import {Component, OnInit} from '../../jspm_packages/npm/angular2@2.0.0-beta.9/core';
+import {RouteParams, ROUTER_DIRECTIVES} from '../../jspm_packages/npm/angular2@2.0.0-beta.9/router';
 
 import {Lecture} from '../services/lecture';
 import {Speaker} from '../services/speaker';
