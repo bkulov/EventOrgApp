@@ -5,7 +5,7 @@ import {Injectable} from 'angular2/core';
 //import * as lib from 'twitter-node-client/index.js';
 
 //import {Twitter} from 'twitter-node-client/index';
-//import {Twitter} from '../../node_modules/twitter-node-client/index';
+import {Twitter} from '../../node_modules/twitter-node-client/index';
 
 //import _ from '/node_modules/twitter-node-client/index.js';
 
@@ -39,7 +39,7 @@ export class TwitterService {
 
 		//var aa = lib;
 
-		//var twitter = new Twitter(config);
+		var twitter = new Twitter(config);
 
 		//System.import('/node_modules/twitter-node-client/index.js').then(function (m) {
 		//	console.log(m);
