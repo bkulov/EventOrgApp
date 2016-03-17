@@ -17,6 +17,11 @@
 
     <script src="https://apis.google.com/js/client.js"></script>
 
+  <script>
+	  // Fixes undefined module function in SystemJS bundle
+	  function module() {}
+  </script>
+
     <!-- 2. Configure SystemJS -->
     <script>
         System.config({
@@ -30,6 +35,7 @@
         System.import('source/main')
             .then(null, console.error.bind(console));
     </script>
+
 </head>
 
 <!-- 3. Display the application -->
