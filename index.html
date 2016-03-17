@@ -23,15 +23,9 @@
   </script>
 
     <!-- 2. Configure SystemJS -->
+	<script src="config.js"></script>
+
     <script>
-        System.config({
-            packages: {
-                source: {
-                    format: 'register',
-                    defaultExtension: 'js'
-                }
-            }
-        });
         System.import('source/main')
             .then(null, console.error.bind(console));
     </script>
