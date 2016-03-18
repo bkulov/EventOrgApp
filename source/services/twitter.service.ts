@@ -1,15 +1,11 @@
-import {Injectable} from 'angular2/core';
-//import {Injectable} from '../../node_modules/angular2/core';
-//import {Twitter} from 'twitter-node-client/index.js';
-
-//import * as lib from 'twitter-node-client/index.js';
-
-//import {Twitter} from 'twitter-node-client/index';
-import {Twitter} from '../../node_modules/twitter-node-client/index';
-
-//import _ from '/node_modules/twitter-node-client/index.js';
 
 declare var System: any;
+
+import {Injectable} from 'angular2/core';
+
+import * as Twitter from 'twitter';
+
+import _ from 'lodash';
 
 @Injectable()
 export class TwitterService {
@@ -29,21 +25,10 @@ export class TwitterService {
 			"callBackUrl": "XXX"
 		}
 
-		// System.import('/node_modules/twitter-node-client/index.js')
-		// 	.then(module => {
-		// 		console.log(module);
-		// 	})
-		// 	.catch(error => {
-		// 		console.log(error);
-		// 	});
-
-		//var aa = lib;
+		_.forEach([1, 2, 3], function (e) {
+			console.log(e);
+		});
 
 		var twitter = new Twitter(config);
-
-		//System.import('/node_modules/twitter-node-client/index.js').then(function (m) {
-		//	console.log(m);
-		//});
-
 	}
 }

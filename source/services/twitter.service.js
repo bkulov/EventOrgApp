@@ -1,4 +1,4 @@
-System.register(['angular2/core', '../../node_modules/twitter-node-client/index'], function(exports_1, context_1) {
+System.register(['angular2/core', 'twitter', 'lodash'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,15 +10,18 @@ System.register(['angular2/core', '../../node_modules/twitter-node-client/index'
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, index_1;
+    var core_1, Twitter, lodash_1;
     var TwitterService;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
             },
-            function (index_1_1) {
-                index_1 = index_1_1;
+            function (Twitter_1) {
+                Twitter = Twitter_1;
+            },
+            function (lodash_1_1) {
+                lodash_1 = lodash_1_1;
             }],
         execute: function() {
             TwitterService = (function () {
@@ -37,18 +40,10 @@ System.register(['angular2/core', '../../node_modules/twitter-node-client/index'
                         "accessTokenSecret": "XXX",
                         "callBackUrl": "XXX"
                     };
-                    // System.import('/node_modules/twitter-node-client/index.js')
-                    // 	.then(module => {
-                    // 		console.log(module);
-                    // 	})
-                    // 	.catch(error => {
-                    // 		console.log(error);
-                    // 	});
-                    //var aa = lib;
-                    var twitter = new index_1.Twitter(config);
-                    //System.import('/node_modules/twitter-node-client/index.js').then(function (m) {
-                    //	console.log(m);
-                    //});
+                    lodash_1.default.forEach([1, 2, 3], function (e) {
+                        console.log(e);
+                    });
+                    var twitter = new Twitter(config);
                 };
                 TwitterService = __decorate([
                     core_1.Injectable(), 
