@@ -1,4 +1,4 @@
-System.register(['angular2/core'], function(exports_1, context_1) {
+System.register(['angular2/core', 'noauth'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,19 +10,17 @@ System.register(['angular2/core'], function(exports_1, context_1) {
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1;
+    var core_1, noauth_1;
     var TwitterService;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
+            },
+            function (noauth_1_1) {
+                noauth_1 = noauth_1_1;
             }],
         execute: function() {
-            //import {Twitter} from 'twitter-node-client/index.js';
-            //import * as lib from 'twitter-node-client/index.js';
-            //import {Twitter} from 'node_modules/twitter-node-client/index.js';
-            //import {Twitter} from 'node_modules/twitter/index.js';
-            //import _ from '/node_modules/twitter-node-client/index.js';
             TwitterService = (function () {
                 function TwitterService() {
                 }
@@ -39,13 +37,14 @@ System.register(['angular2/core'], function(exports_1, context_1) {
                         "accessTokenSecret": "XXX",
                         "callBackUrl": "XXX"
                     };
-                    System.import('twitter-node-client/index.js')
-                        .then(function (module) {
-                        console.log(module);
-                    })
-                        .catch(function (error) {
-                        console.log(error);
-                    });
+                    var aa = noauth_1.default;
+                    //System.import('node_modules/twitter-node-client/index.js')
+                    //	.then(module => {
+                    //		console.log(module);
+                    //	})
+                    //	.catch(error => {
+                    //		console.log(error);
+                    //	});
                     //var aa = lib;
                     //var twitter = new Twitter(config);
                     //System.import('/node_modules/twitter-node-client/index.js').then(function (m) {

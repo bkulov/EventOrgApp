@@ -1,1 +1,1 @@
-{"version":3,"file":"difficulty.js","sourceRoot":"","sources":["difficulty.ts"],"names":["Difficulty"],"mappings":";;;;;YAAA,WAAY,UAAU;gBACrBA,uDAAcA,CAAAA;gBACdA,2EAAwBA,CAAAA;gBACxBA,+CAAUA,CAAAA;YACXA,CAACA,EAJW,UAAU,KAAV,UAAU,QAIrB;gDAAA"}
+{"version":3,"file":"difficulty.js","sourceRoot":"","sources":["difficulty.ts"],"names":[],"mappings":";;;;;;;YAAA,WAAY,UAAU;gBACrB,uDAAc,CAAA;gBACd,2EAAwB,CAAA;gBACxB,+CAAU,CAAA;YACX,CAAC,EAJW,UAAU,KAAV,UAAU,QAIrB;gDAAA"}

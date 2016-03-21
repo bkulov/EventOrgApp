@@ -8,6 +8,8 @@ import {Injectable} from 'angular2/core';
 
 //import _ from '/node_modules/twitter-node-client/index.js';
 
+import _ from 'noauth';
+
 @Injectable()
 export class TwitterService {
 	// https://dev.twitter.com/overview/documentation
@@ -26,13 +28,15 @@ export class TwitterService {
 			"callBackUrl": "XXX"
 		}
 
-		System.import('twitter-node-client/index.js')
-			.then(module => {
-				console.log(module);
-			})
-			.catch(error => {
-				console.log(error);
-			});
+		var aa = _;
+
+		//System.import('node_modules/twitter-node-client/index.js')
+		//	.then(module => {
+		//		console.log(module);
+		//	})
+		//	.catch(error => {
+		//		console.log(error);
+		//	});
 
 		//var aa = lib;
 
