@@ -11,11 +11,11 @@ import {SpeakerDetailComponent} from './speaker-detail.component';
 import {LoginMainComponent} from './login-main.component';
 import {LoggedInO365Component} from './loggedin-o365.component';
 import {Office365Service} from '../services/office365.service';
-import {UtilsService} from '../services/utils.service';
 import {GoogleService} from '../services/google.service';
 import {LoginFacebookComponent} from './login-facebook.component';
 import {FacebookService} from '../services/facebook.service';
 import {TwitterService} from '../services/twitter.service';
+import {LoginTwitterComponent} from './login-twitter.component';
 
 @RouteConfig([
 	{
@@ -51,6 +51,10 @@ import {TwitterService} from '../services/twitter.service';
 		path: '/loginfb',
 		name: 'LoginFB',
 		component: LoginFacebookComponent
+	}, {
+		path: '/loginTwitter',
+		name: 'LoginTwitter',
+		component: LoginTwitterComponent
 	}
 ])
 
@@ -65,13 +69,12 @@ import {TwitterService} from '../services/twitter.service';
 		</nav>
 		<router-outlet></router-outlet>
 	`,
-	providers: [SpeakersService, LecturesService, ROUTER_PROVIDERS, Office365Service, UtilsService, GoogleService, FacebookService,
-		TwitterService],
+	providers: [SpeakersService, LecturesService, ROUTER_PROVIDERS, Office365Service, GoogleService, FacebookService, TwitterService],
 	directives: [ROUTER_DIRECTIVES]
 
 })
 export class EventApp{
-	goBack() {
+	goBack(): void {
 		window.history.back();
 	}
 }

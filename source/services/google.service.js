@@ -1,4 +1,6 @@
-System.register(['angular2/core', 'angular2/router', './utils.service'], function(exports_1) {
+System.register(['angular2/core', 'angular2/router'], function(exports_1, context_1) {
+    "use strict";
+    var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -8,7 +10,7 @@ System.register(['angular2/core', 'angular2/router', './utils.service'], functio
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, router_1, utils_service_1;
+    var core_1, router_1;
     var GoogleService;
     return {
         setters:[
@@ -17,14 +19,10 @@ System.register(['angular2/core', 'angular2/router', './utils.service'], functio
             },
             function (router_1_1) {
                 router_1 = router_1_1;
-            },
-            function (utils_service_1_1) {
-                utils_service_1 = utils_service_1_1;
             }],
         execute: function() {
             GoogleService = (function () {
-                function GoogleService(_utilsService, _router) {
-                    this._utilsService = _utilsService;
+                function GoogleService(_router) {
                     this._router = _router;
                     // TODO: check if this is needed
                     //gapi.auth.init(() => {});
@@ -80,10 +78,10 @@ System.register(['angular2/core', 'angular2/router', './utils.service'], functio
                 GoogleService.prototype.login = function () {
                     var _this = this;
                     if (!this._clientConfig) {
-                        this._utilsService.loadJSON('/google_client_id.json', (function (content) {
-                            _this._clientConfig = JSON.parse(content);
+                        System.import('/google_client_id.json').then(function (content) {
+                            _this._clientConfig = content;
                             _this._authenticate();
-                        }));
+                        });
                     }
                     else {
                         if (!this._token) {
@@ -96,10 +94,10 @@ System.register(['angular2/core', 'angular2/router', './utils.service'], functio
                 };
                 GoogleService = __decorate([
                     core_1.Injectable(), 
-                    __metadata('design:paramtypes', [utils_service_1.UtilsService, router_1.Router])
+                    __metadata('design:paramtypes', [router_1.Router])
                 ], GoogleService);
                 return GoogleService;
-            })();
+            }());
             exports_1("GoogleService", GoogleService);
         }
     }

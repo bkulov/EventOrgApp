@@ -1,4 +1,4 @@
-System.register(['angular2/core'], function(exports_1, context_1) {
+System.register(['angular2/core', 'codebird'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -16,41 +16,63 @@ System.register(['angular2/core'], function(exports_1, context_1) {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
-            }],
+            },
+            function (_1) {}],
         execute: function() {
-            //import {Twitter} from 'twitter-node-client/index.js';
-            //import * as lib from 'twitter-node-client/index.js';
-            //import {Twitter} from 'node_modules/twitter-node-client/index.js';
-            //import {Twitter} from 'node_modules/twitter/index.js';
-            //import _ from '/node_modules/twitter-node-client/index.js';
             TwitterService = (function () {
                 function TwitterService() {
                 }
-                // https://dev.twitter.com/overview/documentation
-                // https://dev.twitter.com/oauth/overview/introduction
-                // https://dev.twitter.com/web/sign-in/implementing
-                // https://dev.twitter.com/web/intents
-                // https://dev.twitter.com/rest/public
                 TwitterService.prototype.login = function () {
-                    var config = {
-                        "consumerKey": "XXX",
-                        "consumerSecret": "XXX",
-                        "accessToken": "XXX",
-                        "accessTokenSecret": "XXX",
-                        "callBackUrl": "XXX"
-                    };
-                    System.import('twitter-node-client/index.js')
-                        .then(function (module) {
-                        console.log(module);
-                    })
-                        .catch(function (error) {
-                        console.log(error);
+                    var _this = this;
+                    System.import("/twitter.json").then(function (twitterConfig) {
+                        _this._twitterConfig = twitterConfig;
+                        if (_this._cb === undefined) {
+                            _this._cb = new Codebird();
+                        }
+                        _this._cb.setConsumerKey(twitterConfig.apiKey, twitterConfig.apiSecret);
+                        _this._cb.__call("oauth_requestToken", { oauth_callback: "oob" }, function (reply, rate, err) {
+                            if (err) {
+                                console.log("error response or timeout exceeded" + err.error);
+                            }
+                            if (reply) {
+                                console.log(reply);
+                                // stores it
+                                _this._cb.setToken(reply.oauth_token, reply.oauth_token_secret);
+                                // gets the authorize screen URL
+                                _this._cb.__call("oauth_authorize", {}, function (auth_url) {
+                                    _this._codebirdAuthWindow = window.open(auth_url);
+                                });
+                            }
+                        });
                     });
-                    //var aa = lib;
-                    //var twitter = new Twitter(config);
-                    //System.import('/node_modules/twitter-node-client/index.js').then(function (m) {
-                    //	console.log(m);
-                    //});
+                };
+                TwitterService.prototype.validatePin = function (pin) {
+                    var self = this;
+                    var result = new Promise(function (resolve, reject) {
+                        if (self._cb !== undefined) {
+                            self._cb.__call("oauth_accessToken", { oauth_verifier: pin }, function (reply, rate, err) {
+                                if (err) {
+                                    console.log("error response or timeout exceeded" + err.error);
+                                }
+                                if (reply && reply.httpstatus == 200 && reply.oauth_token) {
+                                    // store the authenticated token, which may be different from the request token (!)
+                                    self._cb.setToken(reply.oauth_token, reply.oauth_token_secret);
+                                    self._authToken = reply.oauth_token;
+                                    if (self._codebirdAuthWindow !== undefined) {
+                                        self._codebirdAuthWindow.close();
+                                    }
+                                    resolve(true);
+                                }
+                                // if you need to persist the login after page reload,
+                                // consider storing the token in a cookie or HTML5 local storage
+                                resolve(false);
+                            });
+                        }
+                        else {
+                            resolve(false);
+                        }
+                    });
+                    return result;
                 };
                 TwitterService = __decorate([
                     core_1.Injectable(), 

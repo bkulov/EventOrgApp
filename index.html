@@ -1,39 +1,33 @@
 ﻿<html>
 <head>
-    <base href="/">
+	<base href="/">
 
-    <title>Event Organizational App</title>
+	<title>Event Organizational App</title>
 
-    <!-- 1. Load libraries -->
-    <!-- IE required polyfills, in this exact order -->
-    <script src="node_modules/es6-shim/es6-shim.min.js"></script>
-    <script src="node_modules/systemjs/dist/system-polyfills.js"></script>
+	<!-- 1. Load libraries -->
+	<!-- IE required polyfills, in this exact order -->
+	<script src="node_modules/es6-shim/es6-shim.min.js"></script>
+	<script src="node_modules/systemjs/dist/system-polyfills.js"></script>
 
-    <script src="node_modules/angular2/bundles/angular2-polyfills.js"></script>
-    <script src="node_modules/systemjs/dist/system.src.js"></script>
-    <script src="node_modules/rxjs/bundles/Rx.js"></script>
-    <script src="node_modules/angular2/bundles/angular2.dev.js"></script>
+	<script src="node_modules/angular2/bundles/angular2-polyfills.js"></script>
+	<script src="node_modules/systemjs/dist/system.src.js"></script>
+	<script src="node_modules/rxjs/bundles/Rx.js"></script>
+	<script src="node_modules/angular2/bundles/angular2.dev.js"></script>
 	<script src="node_modules/angular2/bundles/router.dev.js"></script>
 
-    <script src="https://apis.google.com/js/client.js"></script>
+	<script src="https://apis.google.com/js/client.js"></script>
 
-    <!-- 2. Configure SystemJS -->
-    <script>
-        System.config({
-            packages: {
-                source: {
-                    format: 'register',
-                    defaultExtension: 'js'
-                }
-            }
-        });
-        System.import('source/main')
+	<!-- 2. Configure SystemJS -->
+	<script src="config.js"></script>
+
+	<script>
+		System.import('source/main')
             .then(null, console.error.bind(console));
-    </script>
+	</script>
 </head>
 
 <!-- 3. Display the application -->
 <body>
-    <event-app>Loading...</event-app>
+	<event-app>Loading...</event-app>
 </body>
 </html>

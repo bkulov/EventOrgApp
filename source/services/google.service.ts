@@ -1,8 +1,6 @@
 ﻿import {Injectable} from 'angular2/core';
 import {Router} from 'angular2/router';
 
-import {UtilsService} from './utils.service';
-
 declare var gapi: any;
 
 @Injectable()
@@ -10,7 +8,7 @@ export class GoogleService {
 	private _clientConfig: Object;
 	private _token: Object;
 
-	constructor(private _utilsService: UtilsService, private _router: Router) {
+	constructor(private _router: Router) {
 		// TODO: check if this is needed
 		//gapi.auth.init(() => {});
 	}
@@ -73,11 +71,11 @@ export class GoogleService {
 
 	login() {
 		if (!this._clientConfig) {
-			this._utilsService.loadJSON('/google_client_id.json', ((content: string) => {
-				this._clientConfig = JSON.parse(content);
+			System.import('/google_client_id.json').then((content: Object) => {
+				this._clientConfig = content;
 
 				this._authenticate();
-			}));
+			});
 		} else {
 			if (!this._token) {
 				this._authenticate();

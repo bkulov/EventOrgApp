@@ -1,0 +1,26 @@
+{
+  "name": "event-org-app",
+  "description": "",
+  "main": "",
+  "authors": [
+    "Borislav Kulov <bkulov@gmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/bkulov/EventOrgApp",
+  "moduleType": [
+    "amd",
+    "es6",
+    "globals",
+    "node",
+    "yui"
+  ],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+  }
+}

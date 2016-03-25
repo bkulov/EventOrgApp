@@ -2,8 +2,8 @@
 import {Router} from 'angular2/router';
 
 import {Office365Service} from '../services/office365.service';
-import {GoogleService} from '../services/google.service';
 import {TwitterService} from '../services/twitter.service';
+import {GoogleService} from '../services/google.service';
 
 @Component({
 	selector: 'login',
@@ -27,6 +27,7 @@ export class LoginMainComponent {
 	}
 
 	loginTwitter(): void {
+		this._router.navigate(['LoginTwitter']);
 		this._twitterService.login();
 	}
 }
